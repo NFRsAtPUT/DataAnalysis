@@ -1,0 +1,794 @@
+﻿ID;Category;Spec;Method;GroupType;Result;LastLastCatForSpec
+C1;Funkcjonalna poprawność;cz1510-adhoc-g-inf-19;adhoc;group;0;23
+C1;Funkcjonalna poprawność;cz1510-adhoc-i-inf-22;adhoc;single;0.05555556;14
+C1;Funkcjonalna poprawność;cz1510-adhoc-i-inf-24;adhoc;single;0;24
+C1;Funkcjonalna poprawność;cz1510-senor-g-mix-17;senor;group;0.3333333;4
+C1;Funkcjonalna poprawność;cz1510-senor-g-mix-18;senor;group;0.1111111;6
+C1;Funkcjonalna poprawność;cz1510-senor-i-mgt-20;senor;single;0.1111111;17
+C1;Funkcjonalna poprawność;cz1510-senor-i-mgt-21;senor;single;0.1111111;23
+C1;Funkcjonalna poprawność;cz1650-adhoc-g-inf-31;adhoc;group;0;25
+C1;Funkcjonalna poprawność;cz1650-adhoc-i-inf-25;adhoc;single;0.05555556;7
+C1;Funkcjonalna poprawność;cz1650-adhoc-i-inf-30;adhoc;single;0.05555556;23
+C1;Funkcjonalna poprawność;cz1650-adhoc-i-inf-32;adhoc;single;0.05555556;25
+C1;Funkcjonalna poprawność;cz1650-senor-g-inf-33;senor;group;0.2777778;6
+C1;Funkcjonalna poprawność;cz1650-senor-i-inf-26;senor;single;0.2222222;8
+C1;Funkcjonalna poprawność;cz1650-senor-i-inf-27;senor;single;0.1111111;10
+C1;Funkcjonalna poprawność;cz1650-senor-i-inf-28;senor;single;0.2777778;15
+C1;Funkcjonalna poprawność;cz1650-senor-i-inf-29;senor;single;0.2777778;15
+C1;Funkcjonalna poprawność;pn1650-adhoc-g-inf-1;adhoc;group;0;18
+C1;Funkcjonalna poprawność;pn1650-senor-g-inf-2;senor;group;0.2222222;18
+C1;Funkcjonalna poprawność;pn1650-senor-g-inf-3;senor;group;0.2222222;18
+C1;Funkcjonalna poprawność;pt0800-adhoc-i-inf-38;adhoc;single;0.05555556;23
+C1;Funkcjonalna poprawność;pt0800-adhoc-i-inf-39;adhoc;single;0;23
+C1;Funkcjonalna poprawność;pt0800-adhoc-i-inf-47;adhoc;single;0;25
+C1;Funkcjonalna poprawność;pt0800-senor-i-inf-37;senor;single;0.05555556;18
+C1;Funkcjonalna poprawność;pt0800-senor-i-inf-44;senor;single;0;19
+C1;Funkcjonalna poprawność;pt0930-adhoc-g-mix-40;adhoc;group;0;19
+C1;Funkcjonalna poprawność;pt0930-senor-g-mix-48;senor;group;0.2222222;8
+C1;Funkcjonalna poprawność;pt0930-senor-i-inf-36;senor;single;0.1666667;7
+C1;Funkcjonalna poprawność;pt0930-senor-i-inf-43;senor;single;0;12
+C1;Funkcjonalna poprawność;pt1130-adhoc-g-mix-45;adhoc;group;0;21
+C1;Funkcjonalna poprawność;pt1130-adhoc-g-mix-46;adhoc;group;0;19
+C1;Funkcjonalna poprawność;pt1130-senor-g-mix-49;senor;group;0.5;6
+C1;Funkcjonalna poprawność;pt1130-senor-i-inf-41;senor;single;0.2222222;12
+C1;Funkcjonalna poprawność;pt1130-senor-i-inf-42;senor;single;0.2222222;5
+C1;Funkcjonalna poprawność;pt1330-adhoc-i-inf-35;adhoc;single;0.05555556;18
+C1;Funkcjonalna poprawność;pt1330-senor-g-mix-50;senor;group;0.3333333;7
+C1;Funkcjonalna poprawność;pt1330-senor-i-inf-34;senor;single;0.1111111;18
+C1;Funkcjonalna poprawność;wt0800-senor-g-mix-4;senor;group;0.2777778;11
+C1;Funkcjonalna poprawność;wt0800-senor-i-inf-5;senor;single;0.1111111;10
+C1;Funkcjonalna poprawność;wt0800-senor-i-inf-6;senor;single;0.3333333;10
+C1;Funkcjonalna poprawność;wt0800-senor-i-inf-7;senor;single;0.1111111;10
+C1;Funkcjonalna poprawność;wt0945-adhoc-i-inf-10;adhoc;single;0.05555556;22
+C1;Funkcjonalna poprawność;wt0945-adhoc-i-inf-101;adhoc;single;0.05555556;22
+C1;Funkcjonalna poprawność;wt0945-adhoc-i-inf-8;adhoc;single;0.1111111;24
+C1;Funkcjonalna poprawność;wt0945-adhoc-i-inf-9;adhoc;single;0.1666667;24
+C1;Funkcjonalna poprawność;wt0945-senor-g-mix-11;senor;group;0.1666667;14
+C1;Funkcjonalna poprawność;wt0945-senor-g-mix-12;senor;group;0.1111111;8
+C1;Funkcjonalna poprawność;wt1650-adhoc-g-mix-13;adhoc;group;0;21
+C1;Funkcjonalna poprawność;wt1650-adhoc-i-inf-14;adhoc;single;0;23
+C1;Funkcjonalna poprawność;wt1650-senor-g-mix-15;senor;group;0.2777778;14
+C1;Funkcjonalna poprawność;wt1650-senor-i-mgt-16;senor;single;0.05555556;21
+C2;Dostępność techniczna;cz1510-adhoc-g-inf-19;adhoc;group;0;23
+C2;Dostępność techniczna;cz1510-adhoc-i-inf-22;adhoc;single;0.08695652;14
+C2;Dostępność techniczna;cz1510-adhoc-i-inf-24;adhoc;single;0.04347826;24
+C2;Dostępność techniczna;cz1510-senor-g-mix-17;senor;group;0.3913043;4
+C2;Dostępność techniczna;cz1510-senor-g-mix-18;senor;group;0.2608696;6
+C2;Dostępność techniczna;cz1510-senor-i-mgt-20;senor;single;0.2608696;17
+C2;Dostępność techniczna;cz1510-senor-i-mgt-21;senor;single;0.2173913;23
+C2;Dostępność techniczna;cz1650-adhoc-g-inf-31;adhoc;group;0.1304348;25
+C2;Dostępność techniczna;cz1650-adhoc-i-inf-25;adhoc;single;0.2173913;7
+C2;Dostępność techniczna;cz1650-adhoc-i-inf-30;adhoc;single;0.04347826;23
+C2;Dostępność techniczna;cz1650-adhoc-i-inf-32;adhoc;single;0.04347826;25
+C2;Dostępność techniczna;cz1650-senor-g-inf-33;senor;group;0.3913043;6
+C2;Dostępność techniczna;cz1650-senor-i-inf-26;senor;single;0.3478261;8
+C2;Dostępność techniczna;cz1650-senor-i-inf-27;senor;single;0.2608696;10
+C2;Dostępność techniczna;cz1650-senor-i-inf-28;senor;single;0.3913043;15
+C2;Dostępność techniczna;cz1650-senor-i-inf-29;senor;single;0.3913043;15
+C2;Dostępność techniczna;pn1650-adhoc-g-inf-1;adhoc;group;0.1304348;18
+C2;Dostępność techniczna;pn1650-senor-g-inf-2;senor;group;0.3043478;18
+C2;Dostępność techniczna;pn1650-senor-g-inf-3;senor;group;0.2608696;18
+C2;Dostępność techniczna;pt0800-adhoc-i-inf-38;adhoc;single;0.08695652;23
+C2;Dostępność techniczna;pt0800-adhoc-i-inf-39;adhoc;single;0.04347826;23
+C2;Dostępność techniczna;pt0800-adhoc-i-inf-47;adhoc;single;0;25
+C2;Dostępność techniczna;pt0800-senor-i-inf-37;senor;single;0.173913;18
+C2;Dostępność techniczna;pt0800-senor-i-inf-44;senor;single;0.08695652;19
+C2;Dostępność techniczna;pt0930-adhoc-g-mix-40;adhoc;group;0.08695652;19
+C2;Dostępność techniczna;pt0930-senor-g-mix-48;senor;group;0.3478261;8
+C2;Dostępność techniczna;pt0930-senor-i-inf-36;senor;single;0.3043478;7
+C2;Dostępność techniczna;pt0930-senor-i-inf-43;senor;single;0.173913;12
+C2;Dostępność techniczna;pt1130-adhoc-g-mix-45;adhoc;group;0.04347826;21
+C2;Dostępność techniczna;pt1130-adhoc-g-mix-46;adhoc;group;0.04347826;19
+C2;Dostępność techniczna;pt1130-senor-g-mix-49;senor;group;0.5652174;6
+C2;Dostępność techniczna;pt1130-senor-i-inf-41;senor;single;0.3478261;12
+C2;Dostępność techniczna;pt1130-senor-i-inf-42;senor;single;0.3478261;5
+C2;Dostępność techniczna;pt1330-adhoc-i-inf-35;adhoc;single;0.04347826;18
+C2;Dostępność techniczna;pt1330-senor-g-mix-50;senor;group;0.4347826;7
+C2;Dostępność techniczna;pt1330-senor-i-inf-34;senor;single;0.3043478;18
+C2;Dostępność techniczna;wt0800-senor-g-mix-4;senor;group;0.3913043;11
+C2;Dostępność techniczna;wt0800-senor-i-inf-5;senor;single;0.2608696;10
+C2;Dostępność techniczna;wt0800-senor-i-inf-6;senor;single;0.4347826;10
+C2;Dostępność techniczna;wt0800-senor-i-inf-7;senor;single;0.2608696;10
+C2;Dostępność techniczna;wt0945-adhoc-i-inf-10;adhoc;single;0.1304348;22
+C2;Dostępność techniczna;wt0945-adhoc-i-inf-101;adhoc;single;0.1304348;22
+C2;Dostępność techniczna;wt0945-adhoc-i-inf-8;adhoc;single;0.08695652;24
+C2;Dostępność techniczna;wt0945-adhoc-i-inf-9;adhoc;single;0.173913;24
+C2;Dostępność techniczna;wt0945-senor-g-mix-11;senor;group;0.2608696;14
+C2;Dostępność techniczna;wt0945-senor-g-mix-12;senor;group;0.173913;8
+C2;Dostępność techniczna;wt1650-adhoc-g-mix-13;adhoc;group;0.173913;21
+C2;Dostępność techniczna;wt1650-adhoc-i-inf-14;adhoc;single;0.04347826;23
+C2;Dostępność techniczna;wt1650-senor-g-mix-15;senor;group;0.3478261;14
+C2;Dostępność techniczna;wt1650-senor-i-mgt-16;senor;single;0.1304348;21
+C3;Odporność na wady;cz1510-adhoc-g-inf-19;adhoc;group;0.03225806;23
+C3;Odporność na wady;cz1510-adhoc-i-inf-22;adhoc;single;0.06451613;14
+C3;Odporność na wady;cz1510-adhoc-i-inf-24;adhoc;single;0.09677419;24
+C3;Odporność na wady;cz1510-senor-g-mix-17;senor;group;0.3870968;4
+C3;Odporność na wady;cz1510-senor-g-mix-18;senor;group;0.2580645;6
+C3;Odporność na wady;cz1510-senor-i-mgt-20;senor;single;0.2258064;17
+C3;Odporność na wady;cz1510-senor-i-mgt-21;senor;single;0.2258064;23
+C3;Odporność na wady;cz1650-adhoc-g-inf-31;adhoc;group;0.09677419;25
+C3;Odporność na wady;cz1650-adhoc-i-inf-25;adhoc;single;0.2903226;7
+C3;Odporność na wady;cz1650-adhoc-i-inf-30;adhoc;single;0.03225806;23
+C3;Odporność na wady;cz1650-adhoc-i-inf-32;adhoc;single;0.03225806;25
+C3;Odporność na wady;cz1650-senor-g-inf-33;senor;group;0.4516129;6
+C3;Odporność na wady;cz1650-senor-i-inf-26;senor;single;0.3548387;8
+C3;Odporność na wady;cz1650-senor-i-inf-27;senor;single;0.2903226;10
+C3;Odporność na wady;cz1650-senor-i-inf-28;senor;single;0.4193548;15
+C3;Odporność na wady;cz1650-senor-i-inf-29;senor;single;0.3870968;15
+C3;Odporność na wady;pn1650-adhoc-g-inf-1;adhoc;group;0.09677419;18
+C3;Odporność na wady;pn1650-senor-g-inf-2;senor;group;0.3225806;18
+C3;Odporność na wady;pn1650-senor-g-inf-3;senor;group;0.3225806;18
+C3;Odporność na wady;pt0800-adhoc-i-inf-38;adhoc;single;0.1290323;23
+C3;Odporność na wady;pt0800-adhoc-i-inf-39;adhoc;single;0.06451613;23
+C3;Odporność na wady;pt0800-adhoc-i-inf-47;adhoc;single;0.09677419;25
+C3;Odporność na wady;pt0800-senor-i-inf-37;senor;single;0.1290323;18
+C3;Odporność na wady;pt0800-senor-i-inf-44;senor;single;0.2258064;19
+C3;Odporność na wady;pt0930-adhoc-g-mix-40;adhoc;group;0.09677419;19
+C3;Odporność na wady;pt0930-senor-g-mix-48;senor;group;0.3548387;8
+C3;Odporność na wady;pt0930-senor-i-inf-36;senor;single;0.3548387;7
+C3;Odporność na wady;pt0930-senor-i-inf-43;senor;single;0.2258064;12
+C3;Odporność na wady;pt1130-adhoc-g-mix-45;adhoc;group;0.06451613;21
+C3;Odporność na wady;pt1130-adhoc-g-mix-46;adhoc;group;0.03225806;19
+C3;Odporność na wady;pt1130-senor-g-mix-49;senor;group;0.5483871;6
+C3;Odporność na wady;pt1130-senor-i-inf-41;senor;single;0.3548387;12
+C3;Odporność na wady;pt1130-senor-i-inf-42;senor;single;0.3225806;5
+C3;Odporność na wady;pt1330-adhoc-i-inf-35;adhoc;single;0.06451613;18
+C3;Odporność na wady;pt1330-senor-g-mix-50;senor;group;0.4516129;7
+C3;Odporność na wady;pt1330-senor-i-inf-34;senor;single;0.2580645;18
+C3;Odporność na wady;wt0800-senor-g-mix-4;senor;group;0.3870968;11
+C3;Odporność na wady;wt0800-senor-i-inf-5;senor;single;0.2258064;10
+C3;Odporność na wady;wt0800-senor-i-inf-6;senor;single;0.3870968;10
+C3;Odporność na wady;wt0800-senor-i-inf-7;senor;single;0.3225806;10
+C3;Odporność na wady;wt0945-adhoc-i-inf-10;adhoc;single;0.09677419;22
+C3;Odporność na wady;wt0945-adhoc-i-inf-101;adhoc;single;0.09677419;22
+C3;Odporność na wady;wt0945-adhoc-i-inf-8;adhoc;single;0.09677419;24
+C3;Odporność na wady;wt0945-adhoc-i-inf-9;adhoc;single;0.1290323;24
+C3;Odporność na wady;wt0945-senor-g-mix-11;senor;group;0.2580645;14
+C3;Odporność na wady;wt0945-senor-g-mix-12;senor;group;0.2258064;8
+C3;Odporność na wady;wt1650-adhoc-g-mix-13;adhoc;group;0.1290323;21
+C3;Odporność na wady;wt1650-adhoc-i-inf-14;adhoc;single;0.06451613;23
+C3;Odporność na wady;wt1650-senor-g-mix-15;senor;group;0.3548387;14
+C3;Odporność na wady;wt1650-senor-i-mgt-16;senor;single;0.1290323;21
+C4;Odtwarzalność;cz1510-adhoc-g-inf-19;adhoc;group;0.07692308;23
+C4;Odtwarzalność;cz1510-adhoc-i-inf-22;adhoc;single;0.07692308;14
+C4;Odtwarzalność;cz1510-adhoc-i-inf-24;adhoc;single;0.1025641;24
+C4;Odtwarzalność;cz1510-senor-g-mix-17;senor;group;0.3846154;4
+C4;Odtwarzalność;cz1510-senor-g-mix-18;senor;group;0.3333333;6
+C4;Odtwarzalność;cz1510-senor-i-mgt-20;senor;single;0.2820513;17
+C4;Odtwarzalność;cz1510-senor-i-mgt-21;senor;single;0.2051282;23
+C4;Odtwarzalność;cz1650-adhoc-g-inf-31;adhoc;group;0.1538462;25
+C4;Odtwarzalność;cz1650-adhoc-i-inf-25;adhoc;single;0.3076923;7
+C4;Odtwarzalność;cz1650-adhoc-i-inf-30;adhoc;single;0.1025641;23
+C4;Odtwarzalność;cz1650-adhoc-i-inf-32;adhoc;single;0.02564103;25
+C4;Odtwarzalność;cz1650-senor-g-inf-33;senor;group;0.5128205;6
+C4;Odtwarzalność;cz1650-senor-i-inf-26;senor;single;0.3846154;8
+C4;Odtwarzalność;cz1650-senor-i-inf-27;senor;single;0.3589744;10
+C4;Odtwarzalność;cz1650-senor-i-inf-28;senor;single;0.4102564;15
+C4;Odtwarzalność;cz1650-senor-i-inf-29;senor;single;0.3846154;15
+C4;Odtwarzalność;pn1650-adhoc-g-inf-1;adhoc;group;0.1538462;18
+C4;Odtwarzalność;pn1650-senor-g-inf-2;senor;group;0.2820513;18
+C4;Odtwarzalność;pn1650-senor-g-inf-3;senor;group;0.3846154;18
+C4;Odtwarzalność;pt0800-adhoc-i-inf-38;adhoc;single;0.1538462;23
+C4;Odtwarzalność;pt0800-adhoc-i-inf-39;adhoc;single;0.1025641;23
+C4;Odtwarzalność;pt0800-adhoc-i-inf-47;adhoc;single;0.1282051;25
+C4;Odtwarzalność;pt0800-senor-i-inf-37;senor;single;0.1282051;18
+C4;Odtwarzalność;pt0800-senor-i-inf-44;senor;single;0.2307692;19
+C4;Odtwarzalność;pt0930-adhoc-g-mix-40;adhoc;group;0.1538462;19
+C4;Odtwarzalność;pt0930-senor-g-mix-48;senor;group;0.3589744;8
+C4;Odtwarzalność;pt0930-senor-i-inf-36;senor;single;0.4102564;7
+C4;Odtwarzalność;pt0930-senor-i-inf-43;senor;single;0.3076923;12
+C4;Odtwarzalność;pt1130-adhoc-g-mix-45;adhoc;group;0.05128205;21
+C4;Odtwarzalność;pt1130-adhoc-g-mix-46;adhoc;group;0.1025641;19
+C4;Odtwarzalność;pt1130-senor-g-mix-49;senor;group;0.5641026;6
+C4;Odtwarzalność;pt1130-senor-i-inf-41;senor;single;0.4102564;12
+C4;Odtwarzalność;pt1130-senor-i-inf-42;senor;single;0.2820513;5
+C4;Odtwarzalność;pt1330-adhoc-i-inf-35;adhoc;single;0.05128205;18
+C4;Odtwarzalność;pt1330-senor-g-mix-50;senor;group;0.4871795;7
+C4;Odtwarzalność;pt1330-senor-i-inf-34;senor;single;0.2564103;18
+C4;Odtwarzalność;wt0800-senor-g-mix-4;senor;group;0.3846154;11
+C4;Odtwarzalność;wt0800-senor-i-inf-5;senor;single;0.2051282;10
+C4;Odtwarzalność;wt0800-senor-i-inf-6;senor;single;0.4102564;10
+C4;Odtwarzalność;wt0800-senor-i-inf-7;senor;single;0.3589744;10
+C4;Odtwarzalność;wt0945-adhoc-i-inf-10;adhoc;single;0.1538462;22
+C4;Odtwarzalność;wt0945-adhoc-i-inf-101;adhoc;single;0.1282051;22
+C4;Odtwarzalność;wt0945-adhoc-i-inf-8;adhoc;single;0.1025641;24
+C4;Odtwarzalność;wt0945-adhoc-i-inf-9;adhoc;single;0.1538462;24
+C4;Odtwarzalność;wt0945-senor-g-mix-11;senor;group;0.2564103;14
+C4;Odtwarzalność;wt0945-senor-g-mix-12;senor;group;0.2564103;8
+C4;Odtwarzalność;wt1650-adhoc-g-mix-13;adhoc;group;0.1282051;21
+C4;Odtwarzalność;wt1650-adhoc-i-inf-14;adhoc;single;0.1282051;23
+C4;Odtwarzalność;wt1650-senor-g-mix-15;senor;group;0.3333333;14
+C4;Odtwarzalność;wt1650-senor-i-mgt-16;senor;single;0.1282051;21
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1510-adhoc-g-inf-19;adhoc;group;0.06521739;23
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1510-adhoc-i-inf-22;adhoc;single;0.06521739;14
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1510-adhoc-i-inf-24;adhoc;single;0.08695652;24
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1510-senor-g-mix-18;senor;group;0.3043478;6
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1510-senor-i-mgt-20;senor;single;0.2608696;17
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1510-senor-i-mgt-21;senor;single;0.1956522;23
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1650-adhoc-g-inf-31;adhoc;group;0.1304348;25
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1650-adhoc-i-inf-25;adhoc;single;0.3043478;7
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1650-adhoc-i-inf-30;adhoc;single;0.1086956;23
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1650-adhoc-i-inf-32;adhoc;single;0.04347826;25
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1650-senor-g-inf-33;senor;group;0.4347826;6
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1650-senor-i-inf-26;senor;single;0.3478261;8
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1650-senor-i-inf-27;senor;single;0.326087;10
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1650-senor-i-inf-28;senor;single;0.3695652;15
+C5;Bezpieczeństwo (Wolność od ryzyka);cz1650-senor-i-inf-29;senor;single;0.3478261;15
+C5;Bezpieczeństwo (Wolność od ryzyka);pn1650-adhoc-g-inf-1;adhoc;group;0.1521739;18
+C5;Bezpieczeństwo (Wolność od ryzyka);pn1650-senor-g-inf-2;senor;group;0.2608696;18
+C5;Bezpieczeństwo (Wolność od ryzyka);pn1650-senor-g-inf-3;senor;group;0.3695652;18
+C5;Bezpieczeństwo (Wolność od ryzyka);pt0800-adhoc-i-inf-38;adhoc;single;0.1304348;23
+C5;Bezpieczeństwo (Wolność od ryzyka);pt0800-adhoc-i-inf-39;adhoc;single;0.08695652;23
+C5;Bezpieczeństwo (Wolność od ryzyka);pt0800-adhoc-i-inf-47;adhoc;single;0.1304348;25
+C5;Bezpieczeństwo (Wolność od ryzyka);pt0800-senor-i-inf-37;senor;single;0.1086956;18
+C5;Bezpieczeństwo (Wolność od ryzyka);pt0800-senor-i-inf-44;senor;single;0.2173913;19
+C5;Bezpieczeństwo (Wolność od ryzyka);pt0930-adhoc-g-mix-40;adhoc;group;0.1521739;19
+C5;Bezpieczeństwo (Wolność od ryzyka);pt0930-senor-g-mix-48;senor;group;0.326087;8
+C5;Bezpieczeństwo (Wolność od ryzyka);pt0930-senor-i-inf-36;senor;single;0.3695652;7
+C5;Bezpieczeństwo (Wolność od ryzyka);pt0930-senor-i-inf-43;senor;single;0.3043478;12
+C5;Bezpieczeństwo (Wolność od ryzyka);pt1130-adhoc-g-mix-45;adhoc;group;0.04347826;21
+C5;Bezpieczeństwo (Wolność od ryzyka);pt1130-adhoc-g-mix-46;adhoc;group;0.08695652;19
+C5;Bezpieczeństwo (Wolność od ryzyka);pt1130-senor-g-mix-49;senor;group;0.5217391;6
+C5;Bezpieczeństwo (Wolność od ryzyka);pt1130-senor-i-inf-41;senor;single;0.3478261;12
+C5;Bezpieczeństwo (Wolność od ryzyka);pt1130-senor-i-inf-42;senor;single;0.2608696;5
+C5;Bezpieczeństwo (Wolność od ryzyka);pt1330-adhoc-i-inf-35;adhoc;single;0.04347826;18
+C5;Bezpieczeństwo (Wolność od ryzyka);pt1330-senor-g-mix-50;senor;group;0.4347826;7
+C5;Bezpieczeństwo (Wolność od ryzyka);pt1330-senor-i-inf-34;senor;single;0.2391304;18
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0800-senor-g-mix-4;senor;group;0.3695652;11
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0800-senor-i-inf-5;senor;single;0.1956522;10
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0800-senor-i-inf-6;senor;single;0.3695652;10
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0800-senor-i-inf-7;senor;single;0.326087;10
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0945-adhoc-i-inf-10;adhoc;single;0.1304348;22
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0945-adhoc-i-inf-101;adhoc;single;0.1086956;22
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0945-adhoc-i-inf-8;adhoc;single;0.1086956;24
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0945-adhoc-i-inf-9;adhoc;single;0.1304348;24
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0945-senor-g-mix-11;senor;group;0.2391304;14
+C5;Bezpieczeństwo (Wolność od ryzyka);wt0945-senor-g-mix-12;senor;group;0.2608696;8
+C5;Bezpieczeństwo (Wolność od ryzyka);wt1650-adhoc-g-mix-13;adhoc;group;0.1086956;21
+C5;Bezpieczeństwo (Wolność od ryzyka);wt1650-adhoc-i-inf-14;adhoc;single;0.1304348;23
+C5;Bezpieczeństwo (Wolność od ryzyka);wt1650-senor-g-mix-15;senor;group;0.3043478;14
+C5;Bezpieczeństwo (Wolność od ryzyka);wt1650-senor-i-mgt-16;senor;single;0.1304348;21
+C6;Kompletność kontekstowa;cz1510-adhoc-g-inf-19;adhoc;group;0.0862069;23
+C6;Kompletność kontekstowa;cz1510-adhoc-i-inf-22;adhoc;single;0.05172414;14
+C6;Kompletność kontekstowa;cz1510-adhoc-i-inf-24;adhoc;single;0.0862069;24
+C6;Kompletność kontekstowa;cz1510-senor-g-mix-18;senor;group;0.2931035;6
+C6;Kompletność kontekstowa;cz1510-senor-i-mgt-20;senor;single;0.2413793;17
+C6;Kompletność kontekstowa;cz1510-senor-i-mgt-21;senor;single;0.1724138;23
+C6;Kompletność kontekstowa;cz1650-adhoc-g-inf-31;adhoc;group;0.1206897;25
+C6;Kompletność kontekstowa;cz1650-adhoc-i-inf-25;adhoc;single;0.3103448;7
+C6;Kompletność kontekstowa;cz1650-adhoc-i-inf-30;adhoc;single;0.0862069;23
+C6;Kompletność kontekstowa;cz1650-adhoc-i-inf-32;adhoc;single;0.05172414;25
+C6;Kompletność kontekstowa;cz1650-senor-g-inf-33;senor;group;0.362069;6
+C6;Kompletność kontekstowa;cz1650-senor-i-inf-26;senor;single;0.2931035;8
+C6;Kompletność kontekstowa;cz1650-senor-i-inf-27;senor;single;0.2586207;10
+C6;Kompletność kontekstowa;cz1650-senor-i-inf-28;senor;single;0.2931035;15
+C6;Kompletność kontekstowa;cz1650-senor-i-inf-29;senor;single;0.3275862;15
+C6;Kompletność kontekstowa;pn1650-adhoc-g-inf-1;adhoc;group;0.1206897;18
+C6;Kompletność kontekstowa;pn1650-senor-g-inf-2;senor;group;0.2586207;18
+C6;Kompletność kontekstowa;pn1650-senor-g-inf-3;senor;group;0.3275862;18
+C6;Kompletność kontekstowa;pt0800-adhoc-i-inf-38;adhoc;single;0.1034483;23
+C6;Kompletność kontekstowa;pt0800-adhoc-i-inf-39;adhoc;single;0.06896552;23
+C6;Kompletność kontekstowa;pt0800-adhoc-i-inf-47;adhoc;single;0.1034483;25
+C6;Kompletność kontekstowa;pt0800-senor-i-inf-37;senor;single;0.0862069;18
+C6;Kompletność kontekstowa;pt0800-senor-i-inf-44;senor;single;0.1896552;19
+C6;Kompletność kontekstowa;pt0930-adhoc-g-mix-40;adhoc;group;0.1206897;19
+C6;Kompletność kontekstowa;pt0930-senor-g-mix-48;senor;group;0.2758621;8
+C6;Kompletność kontekstowa;pt0930-senor-i-inf-36;senor;single;0.3275862;7
+C6;Kompletność kontekstowa;pt0930-senor-i-inf-43;senor;single;0.2931035;12
+C6;Kompletność kontekstowa;pt1130-adhoc-g-mix-45;adhoc;group;0.03448276;21
+C6;Kompletność kontekstowa;pt1130-adhoc-g-mix-46;adhoc;group;0.0862069;19
+C6;Kompletność kontekstowa;pt1130-senor-g-mix-49;senor;group;0.4482759;6
+C6;Kompletność kontekstowa;pt1130-senor-i-inf-41;senor;single;0.2931035;12
+C6;Kompletność kontekstowa;pt1330-adhoc-i-inf-35;adhoc;single;0.05172414;18
+C6;Kompletność kontekstowa;pt1330-senor-g-mix-50;senor;group;0.3965517;7
+C6;Kompletność kontekstowa;pt1330-senor-i-inf-34;senor;single;0.1896552;18
+C6;Kompletność kontekstowa;wt0800-senor-g-mix-4;senor;group;0.3275862;11
+C6;Kompletność kontekstowa;wt0800-senor-i-inf-5;senor;single;0.2068966;10
+C6;Kompletność kontekstowa;wt0800-senor-i-inf-6;senor;single;0.3275862;10
+C6;Kompletność kontekstowa;wt0800-senor-i-inf-7;senor;single;0.3103448;10
+C6;Kompletność kontekstowa;wt0945-adhoc-i-inf-10;adhoc;single;0.1034483;22
+C6;Kompletność kontekstowa;wt0945-adhoc-i-inf-101;adhoc;single;0.0862069;22
+C6;Kompletność kontekstowa;wt0945-adhoc-i-inf-8;adhoc;single;0.1206897;24
+C6;Kompletność kontekstowa;wt0945-adhoc-i-inf-9;adhoc;single;0.137931;24
+C6;Kompletność kontekstowa;wt0945-senor-g-mix-11;senor;group;0.2241379;14
+C6;Kompletność kontekstowa;wt0945-senor-g-mix-12;senor;group;0.2241379;8
+C6;Kompletność kontekstowa;wt1650-adhoc-g-mix-13;adhoc;group;0.1034483;21
+C6;Kompletność kontekstowa;wt1650-adhoc-i-inf-14;adhoc;single;0.1034483;23
+C6;Kompletność kontekstowa;wt1650-senor-g-mix-15;senor;group;0.2758621;14
+C6;Kompletność kontekstowa;wt1650-senor-i-mgt-16;senor;single;0.1206897;21
+C7;Łatwość operowania;cz1510-adhoc-g-inf-19;adhoc;group;0.1;23
+C7;Łatwość operowania;cz1510-adhoc-i-inf-22;adhoc;single;0.05714286;14
+C7;Łatwość operowania;cz1510-adhoc-i-inf-24;adhoc;single;0.08571429;24
+C7;Łatwość operowania;cz1510-senor-i-mgt-20;senor;single;0.2428571;17
+C7;Łatwość operowania;cz1510-senor-i-mgt-21;senor;single;0.1714286;23
+C7;Łatwość operowania;cz1650-adhoc-g-inf-31;adhoc;group;0.1142857;25
+C7;Łatwość operowania;cz1650-adhoc-i-inf-25;adhoc;single;0.2857143;7
+C7;Łatwość operowania;cz1650-adhoc-i-inf-30;adhoc;single;0.08571429;23
+C7;Łatwość operowania;cz1650-adhoc-i-inf-32;adhoc;single;0.08571429;25
+C7;Łatwość operowania;cz1650-senor-i-inf-26;senor;single;0.2428571;8
+C7;Łatwość operowania;cz1650-senor-i-inf-27;senor;single;0.2857143;10
+C7;Łatwość operowania;cz1650-senor-i-inf-28;senor;single;0.3;15
+C7;Łatwość operowania;cz1650-senor-i-inf-29;senor;single;0.3428572;15
+C7;Łatwość operowania;pn1650-adhoc-g-inf-1;adhoc;group;0.1;18
+C7;Łatwość operowania;pn1650-senor-g-inf-2;senor;group;0.2714286;18
+C7;Łatwość operowania;pn1650-senor-g-inf-3;senor;group;0.3142857;18
+C7;Łatwość operowania;pt0800-adhoc-i-inf-38;adhoc;single;0.1142857;23
+C7;Łatwość operowania;pt0800-adhoc-i-inf-39;adhoc;single;0.08571429;23
+C7;Łatwość operowania;pt0800-adhoc-i-inf-47;adhoc;single;0.1;25
+C7;Łatwość operowania;pt0800-senor-i-inf-37;senor;single;0.1285714;18
+C7;Łatwość operowania;pt0800-senor-i-inf-44;senor;single;0.2;19
+C7;Łatwość operowania;pt0930-adhoc-g-mix-40;adhoc;group;0.1285714;19
+C7;Łatwość operowania;pt0930-senor-g-mix-48;senor;group;0.2571429;8
+C7;Łatwość operowania;pt0930-senor-i-inf-36;senor;single;0.3428572;7
+C7;Łatwość operowania;pt0930-senor-i-inf-43;senor;single;0.2857143;12
+C7;Łatwość operowania;pt1130-adhoc-g-mix-45;adhoc;group;0.02857143;21
+C7;Łatwość operowania;pt1130-adhoc-g-mix-46;adhoc;group;0.1;19
+C7;Łatwość operowania;pt1130-senor-i-inf-41;senor;single;0.3142857;12
+C7;Łatwość operowania;pt1330-adhoc-i-inf-35;adhoc;single;0.05714286;18
+C7;Łatwość operowania;pt1330-senor-g-mix-50;senor;group;0.3857143;7
+C7;Łatwość operowania;pt1330-senor-i-inf-34;senor;single;0.2428571;18
+C7;Łatwość operowania;wt0800-senor-g-mix-4;senor;group;0.3285714;11
+C7;Łatwość operowania;wt0800-senor-i-inf-5;senor;single;0.2142857;10
+C7;Łatwość operowania;wt0800-senor-i-inf-6;senor;single;0.3285714;10
+C7;Łatwość operowania;wt0800-senor-i-inf-7;senor;single;0.3285714;10
+C7;Łatwość operowania;wt0945-adhoc-i-inf-10;adhoc;single;0.1;22
+C7;Łatwość operowania;wt0945-adhoc-i-inf-101;adhoc;single;0.08571429;22
+C7;Łatwość operowania;wt0945-adhoc-i-inf-8;adhoc;single;0.1142857;24
+C7;Łatwość operowania;wt0945-adhoc-i-inf-9;adhoc;single;0.1285714;24
+C7;Łatwość operowania;wt0945-senor-g-mix-11;senor;group;0.2;14
+C7;Łatwość operowania;wt0945-senor-g-mix-12;senor;group;0.2285714;8
+C7;Łatwość operowania;wt1650-adhoc-g-mix-13;adhoc;group;0.1142857;21
+C7;Łatwość operowania;wt1650-adhoc-i-inf-14;adhoc;single;0.1;23
+C7;Łatwość operowania;wt1650-senor-g-mix-15;senor;group;0.2857143;14
+C7;Łatwość operowania;wt1650-senor-i-mgt-16;senor;single;0.1285714;21
+C8;Ochrona użytkownika przed błędami;cz1510-adhoc-g-inf-19;adhoc;group;0.1;23
+C8;Ochrona użytkownika przed błędami;cz1510-adhoc-i-inf-22;adhoc;single;0.05;14
+C8;Ochrona użytkownika przed błędami;cz1510-adhoc-i-inf-24;adhoc;single;0.0875;24
+C8;Ochrona użytkownika przed błędami;cz1510-senor-i-mgt-20;senor;single;0.2375;17
+C8;Ochrona użytkownika przed błędami;cz1510-senor-i-mgt-21;senor;single;0.1625;23
+C8;Ochrona użytkownika przed błędami;cz1650-adhoc-g-inf-31;adhoc;group;0.1125;25
+C8;Ochrona użytkownika przed błędami;cz1650-adhoc-i-inf-30;adhoc;single;0.1;23
+C8;Ochrona użytkownika przed błędami;cz1650-adhoc-i-inf-32;adhoc;single;0.0875;25
+C8;Ochrona użytkownika przed błędami;cz1650-senor-i-inf-26;senor;single;0.25;8
+C8;Ochrona użytkownika przed błędami;cz1650-senor-i-inf-27;senor;single;0.2875;10
+C8;Ochrona użytkownika przed błędami;cz1650-senor-i-inf-28;senor;single;0.3;15
+C8;Ochrona użytkownika przed błędami;cz1650-senor-i-inf-29;senor;single;0.325;15
+C8;Ochrona użytkownika przed błędami;pn1650-adhoc-g-inf-1;adhoc;group;0.1;18
+C8;Ochrona użytkownika przed błędami;pn1650-senor-g-inf-2;senor;group;0.275;18
+C8;Ochrona użytkownika przed błędami;pn1650-senor-g-inf-3;senor;group;0.3125;18
+C8;Ochrona użytkownika przed błędami;pt0800-adhoc-i-inf-38;adhoc;single;0.1125;23
+C8;Ochrona użytkownika przed błędami;pt0800-adhoc-i-inf-39;adhoc;single;0.075;23
+C8;Ochrona użytkownika przed błędami;pt0800-adhoc-i-inf-47;adhoc;single;0.1125;25
+C8;Ochrona użytkownika przed błędami;pt0800-senor-i-inf-37;senor;single;0.125;18
+C8;Ochrona użytkownika przed błędami;pt0800-senor-i-inf-44;senor;single;0.2;19
+C8;Ochrona użytkownika przed błędami;pt0930-adhoc-g-mix-40;adhoc;group;0.125;19
+C8;Ochrona użytkownika przed błędami;pt0930-senor-g-mix-48;senor;group;0.25;8
+C8;Ochrona użytkownika przed błędami;pt0930-senor-i-inf-43;senor;single;0.2875;12
+C8;Ochrona użytkownika przed błędami;pt1130-adhoc-g-mix-45;adhoc;group;0.0375;21
+C8;Ochrona użytkownika przed błędami;pt1130-adhoc-g-mix-46;adhoc;group;0.1125;19
+C8;Ochrona użytkownika przed błędami;pt1130-senor-i-inf-41;senor;single;0.2875;12
+C8;Ochrona użytkownika przed błędami;pt1330-adhoc-i-inf-35;adhoc;single;0.0625;18
+C8;Ochrona użytkownika przed błędami;pt1330-senor-i-inf-34;senor;single;0.2375;18
+C8;Ochrona użytkownika przed błędami;wt0800-senor-g-mix-4;senor;group;0.3125;11
+C8;Ochrona użytkownika przed błędami;wt0800-senor-i-inf-5;senor;single;0.2125;10
+C8;Ochrona użytkownika przed błędami;wt0800-senor-i-inf-6;senor;single;0.3125;10
+C8;Ochrona użytkownika przed błędami;wt0800-senor-i-inf-7;senor;single;0.325;10
+C8;Ochrona użytkownika przed błędami;wt0945-adhoc-i-inf-10;adhoc;single;0.1;22
+C8;Ochrona użytkownika przed błędami;wt0945-adhoc-i-inf-101;adhoc;single;0.0875;22
+C8;Ochrona użytkownika przed błędami;wt0945-adhoc-i-inf-8;adhoc;single;0.1125;24
+C8;Ochrona użytkownika przed błędami;wt0945-adhoc-i-inf-9;adhoc;single;0.125;24
+C8;Ochrona użytkownika przed błędami;wt0945-senor-g-mix-11;senor;group;0.2;14
+C8;Ochrona użytkownika przed błędami;wt0945-senor-g-mix-12;senor;group;0.2375;8
+C8;Ochrona użytkownika przed błędami;wt1650-adhoc-g-mix-13;adhoc;group;0.1125;21
+C8;Ochrona użytkownika przed błędami;wt1650-adhoc-i-inf-14;adhoc;single;0.1;23
+C8;Ochrona użytkownika przed błędami;wt1650-senor-g-mix-15;senor;group;0.2875;14
+C8;Ochrona użytkownika przed błędami;wt1650-senor-i-mgt-16;senor;single;0.125;21
+C9;Estetyka Interfejsu użytkownika (UI);cz1510-adhoc-g-inf-19;adhoc;group;0.09195402;23
+C9;Estetyka Interfejsu użytkownika (UI);cz1510-adhoc-i-inf-22;adhoc;single;0.05747126;14
+C9;Estetyka Interfejsu użytkownika (UI);cz1510-adhoc-i-inf-24;adhoc;single;0.1034483;24
+C9;Estetyka Interfejsu użytkownika (UI);cz1510-senor-i-mgt-20;senor;single;0.2413793;17
+C9;Estetyka Interfejsu użytkownika (UI);cz1510-senor-i-mgt-21;senor;single;0.1494253;23
+C9;Estetyka Interfejsu użytkownika (UI);cz1650-adhoc-g-inf-31;adhoc;group;0.1264368;25
+C9;Estetyka Interfejsu użytkownika (UI);cz1650-adhoc-i-inf-30;adhoc;single;0.1149425;23
+C9;Estetyka Interfejsu użytkownika (UI);cz1650-adhoc-i-inf-32;adhoc;single;0.09195402;25
+C9;Estetyka Interfejsu użytkownika (UI);cz1650-senor-i-inf-27;senor;single;0.2758621;10
+C9;Estetyka Interfejsu użytkownika (UI);cz1650-senor-i-inf-28;senor;single;0.2988506;15
+C9;Estetyka Interfejsu użytkownika (UI);cz1650-senor-i-inf-29;senor;single;0.3103448;15
+C9;Estetyka Interfejsu użytkownika (UI);pn1650-adhoc-g-inf-1;adhoc;group;0.1149425;18
+C9;Estetyka Interfejsu użytkownika (UI);pn1650-senor-g-inf-2;senor;group;0.2528736;18
+C9;Estetyka Interfejsu użytkownika (UI);pn1650-senor-g-inf-3;senor;group;0.2988506;18
+C9;Estetyka Interfejsu użytkownika (UI);pt0800-adhoc-i-inf-38;adhoc;single;0.1149425;23
+C9;Estetyka Interfejsu użytkownika (UI);pt0800-adhoc-i-inf-39;adhoc;single;0.09195402;23
+C9;Estetyka Interfejsu użytkownika (UI);pt0800-adhoc-i-inf-47;adhoc;single;0.1034483;25
+C9;Estetyka Interfejsu użytkownika (UI);pt0800-senor-i-inf-37;senor;single;0.1149425;18
+C9;Estetyka Interfejsu użytkownika (UI);pt0800-senor-i-inf-44;senor;single;0.183908;19
+C9;Estetyka Interfejsu użytkownika (UI);pt0930-adhoc-g-mix-40;adhoc;group;0.1264368;19
+C9;Estetyka Interfejsu użytkownika (UI);pt0930-senor-i-inf-43;senor;single;0.2873563;12
+C9;Estetyka Interfejsu użytkownika (UI);pt1130-adhoc-g-mix-45;adhoc;group;0.06896552;21
+C9;Estetyka Interfejsu użytkownika (UI);pt1130-adhoc-g-mix-46;adhoc;group;0.1149425;19
+C9;Estetyka Interfejsu użytkownika (UI);pt1130-senor-i-inf-41;senor;single;0.2643678;12
+C9;Estetyka Interfejsu użytkownika (UI);pt1330-adhoc-i-inf-35;adhoc;single;0.06896552;18
+C9;Estetyka Interfejsu użytkownika (UI);pt1330-senor-i-inf-34;senor;single;0.2183908;18
+C9;Estetyka Interfejsu użytkownika (UI);wt0800-senor-g-mix-4;senor;group;0.3103448;11
+C9;Estetyka Interfejsu użytkownika (UI);wt0800-senor-i-inf-5;senor;single;0.2183908;10
+C9;Estetyka Interfejsu użytkownika (UI);wt0800-senor-i-inf-6;senor;single;0.2873563;10
+C9;Estetyka Interfejsu użytkownika (UI);wt0800-senor-i-inf-7;senor;single;0.2988506;10
+C9;Estetyka Interfejsu użytkownika (UI);wt0945-adhoc-i-inf-10;adhoc;single;0.1034483;22
+C9;Estetyka Interfejsu użytkownika (UI);wt0945-adhoc-i-inf-101;adhoc;single;0.09195402;22
+C9;Estetyka Interfejsu użytkownika (UI);wt0945-adhoc-i-inf-8;adhoc;single;0.1149425;24
+C9;Estetyka Interfejsu użytkownika (UI);wt0945-adhoc-i-inf-9;adhoc;single;0.1264368;24
+C9;Estetyka Interfejsu użytkownika (UI);wt0945-senor-g-mix-11;senor;group;0.1954023;14
+C9;Estetyka Interfejsu użytkownika (UI);wt1650-adhoc-g-mix-13;adhoc;group;0.1149425;21
+C9;Estetyka Interfejsu użytkownika (UI);wt1650-adhoc-i-inf-14;adhoc;single;0.1034483;23
+C9;Estetyka Interfejsu użytkownika (UI);wt1650-senor-g-mix-15;senor;group;0.2873563;14
+C9;Estetyka Interfejsu użytkownika (UI);wt1650-senor-i-mgt-16;senor;single;0.1264368;21
+C10;Dostępność personalna;cz1510-adhoc-g-inf-19;adhoc;group;0.08510638;23
+C10;Dostępność personalna;cz1510-adhoc-i-inf-22;adhoc;single;0.05319149;14
+C10;Dostępność personalna;cz1510-adhoc-i-inf-24;adhoc;single;0.106383;24
+C10;Dostępność personalna;cz1510-senor-i-mgt-20;senor;single;0.2446809;17
+C10;Dostępność personalna;cz1510-senor-i-mgt-21;senor;single;0.1595745;23
+C10;Dostępność personalna;cz1650-adhoc-g-inf-31;adhoc;group;0.1276596;25
+C10;Dostępność personalna;cz1650-adhoc-i-inf-30;adhoc;single;0.106383;23
+C10;Dostępność personalna;cz1650-adhoc-i-inf-32;adhoc;single;0.08510638;25
+C10;Dostępność personalna;cz1650-senor-i-inf-27;senor;single;0.287234;10
+C10;Dostępność personalna;cz1650-senor-i-inf-28;senor;single;0.3191489;15
+C10;Dostępność personalna;cz1650-senor-i-inf-29;senor;single;0.3297872;15
+C10;Dostępność personalna;pn1650-adhoc-g-inf-1;adhoc;group;0.106383;18
+C10;Dostępność personalna;pn1650-senor-g-inf-2;senor;group;0.2340426;18
+C10;Dostępność personalna;pn1650-senor-g-inf-3;senor;group;0.2765957;18
+C10;Dostępność personalna;pt0800-adhoc-i-inf-38;adhoc;single;0.106383;23
+C10;Dostępność personalna;pt0800-adhoc-i-inf-39;adhoc;single;0.08510638;23
+C10;Dostępność personalna;pt0800-adhoc-i-inf-47;adhoc;single;0.09574468;25
+C10;Dostępność personalna;pt0800-senor-i-inf-37;senor;single;0.1382979;18
+C10;Dostępność personalna;pt0800-senor-i-inf-44;senor;single;0.1914894;19
+C10;Dostępność personalna;pt0930-adhoc-g-mix-40;adhoc;group;0.1170213;19
+C10;Dostępność personalna;pt0930-senor-i-inf-43;senor;single;0.287234;12
+C10;Dostępność personalna;pt1130-adhoc-g-mix-45;adhoc;group;0.06382979;21
+C10;Dostępność personalna;pt1130-adhoc-g-mix-46;adhoc;group;0.106383;19
+C10;Dostępność personalna;pt1130-senor-i-inf-41;senor;single;0.2659574;12
+C10;Dostępność personalna;pt1330-adhoc-i-inf-35;adhoc;single;0.06382979;18
+C10;Dostępność personalna;pt1330-senor-i-inf-34;senor;single;0.2234043;18
+C10;Dostępność personalna;wt0800-senor-g-mix-4;senor;group;0.3191489;11
+C10;Dostępność personalna;wt0800-senor-i-inf-5;senor;single;0.2340426;10
+C10;Dostępność personalna;wt0800-senor-i-inf-6;senor;single;0.287234;10
+C10;Dostępność personalna;wt0800-senor-i-inf-7;senor;single;0.2978723;10
+C10;Dostępność personalna;wt0945-adhoc-i-inf-10;adhoc;single;0.09574468;22
+C10;Dostępność personalna;wt0945-adhoc-i-inf-101;adhoc;single;0.08510638;22
+C10;Dostępność personalna;wt0945-adhoc-i-inf-8;adhoc;single;0.1170213;24
+C10;Dostępność personalna;wt0945-adhoc-i-inf-9;adhoc;single;0.1276596;24
+C10;Dostępność personalna;wt0945-senor-g-mix-11;senor;group;0.2021277;14
+C10;Dostępność personalna;wt1650-adhoc-g-mix-13;adhoc;group;0.1276596;21
+C10;Dostępność personalna;wt1650-adhoc-i-inf-14;adhoc;single;0.1170213;23
+C10;Dostępność personalna;wt1650-senor-g-mix-15;senor;group;0.2765957;14
+C10;Dostępność personalna;wt1650-senor-i-mgt-16;senor;single;0.1276596;21
+C11;Analizowalność;cz1510-adhoc-g-inf-19;adhoc;group;0.1009174;23
+C11;Analizowalność;cz1510-adhoc-i-inf-22;adhoc;single;0.04587156;14
+C11;Analizowalność;cz1510-adhoc-i-inf-24;adhoc;single;0.09174312;24
+C11;Analizowalność;cz1510-senor-i-mgt-20;senor;single;0.2385321;17
+C11;Analizowalność;cz1510-senor-i-mgt-21;senor;single;0.1376147;23
+C11;Analizowalność;cz1650-adhoc-g-inf-31;adhoc;group;0.1376147;25
+C11;Analizowalność;cz1650-adhoc-i-inf-30;adhoc;single;0.1192661;23
+C11;Analizowalność;cz1650-adhoc-i-inf-32;adhoc;single;0.1009174;25
+C11;Analizowalność;cz1650-senor-i-inf-28;senor;single;0.3119266;15
+C11;Analizowalność;cz1650-senor-i-inf-29;senor;single;0.3302752;15
+C11;Analizowalność;pn1650-adhoc-g-inf-1;adhoc;group;0.1376147;18
+C11;Analizowalność;pn1650-senor-g-inf-2;senor;group;0.2018349;18
+C11;Analizowalność;pn1650-senor-g-inf-3;senor;group;0.2385321;18
+C11;Analizowalność;pt0800-adhoc-i-inf-38;adhoc;single;0.1009174;23
+C11;Analizowalność;pt0800-adhoc-i-inf-39;adhoc;single;0.09174312;23
+C11;Analizowalność;pt0800-adhoc-i-inf-47;adhoc;single;0.1192661;25
+C11;Analizowalność;pt0800-senor-i-inf-37;senor;single;0.1192661;18
+C11;Analizowalność;pt0800-senor-i-inf-44;senor;single;0.1651376;19
+C11;Analizowalność;pt0930-adhoc-g-mix-40;adhoc;group;0.1100917;19
+C11;Analizowalność;pt0930-senor-i-inf-43;senor;single;0.266055;12
+C11;Analizowalność;pt1130-adhoc-g-mix-45;adhoc;group;0.05504587;21
+C11;Analizowalność;pt1130-adhoc-g-mix-46;adhoc;group;0.09174312;19
+C11;Analizowalność;pt1130-senor-i-inf-41;senor;single;0.2844037;12
+C11;Analizowalność;pt1330-adhoc-i-inf-35;adhoc;single;0.05504587;18
+C11;Analizowalność;pt1330-senor-i-inf-34;senor;single;0.2018349;18
+C11;Analizowalność;wt0800-senor-g-mix-4;senor;group;0.3027523;11
+C11;Analizowalność;wt0945-adhoc-i-inf-10;adhoc;single;0.1100917;22
+C11;Analizowalność;wt0945-adhoc-i-inf-101;adhoc;single;0.1009174;22
+C11;Analizowalność;wt0945-adhoc-i-inf-8;adhoc;single;0.1284404;24
+C11;Analizowalność;wt0945-adhoc-i-inf-9;adhoc;single;0.1192661;24
+C11;Analizowalność;wt0945-senor-g-mix-11;senor;group;0.2110092;14
+C11;Analizowalność;wt1650-adhoc-g-mix-13;adhoc;group;0.1192661;21
+C11;Analizowalność;wt1650-adhoc-i-inf-14;adhoc;single;0.146789;23
+C11;Analizowalność;wt1650-senor-g-mix-15;senor;group;0.2568807;14
+C11;Analizowalność;wt1650-senor-i-mgt-16;senor;single;0.1100917;21
+C12;Łatwość zmiany;cz1510-adhoc-g-inf-19;adhoc;group;0.1016949;23
+C12;Łatwość zmiany;cz1510-adhoc-i-inf-22;adhoc;single;0.04237288;14
+C12;Łatwość zmiany;cz1510-adhoc-i-inf-24;adhoc;single;0.09322034;24
+C12;Łatwość zmiany;cz1510-senor-i-mgt-20;senor;single;0.2372881;17
+C12;Łatwość zmiany;cz1510-senor-i-mgt-21;senor;single;0.1440678;23
+C12;Łatwość zmiany;cz1650-adhoc-g-inf-31;adhoc;group;0.1525424;25
+C12;Łatwość zmiany;cz1650-adhoc-i-inf-30;adhoc;single;0.1186441;23
+C12;Łatwość zmiany;cz1650-adhoc-i-inf-32;adhoc;single;0.09322034;25
+C12;Łatwość zmiany;cz1650-senor-i-inf-28;senor;single;0.3135593;15
+C12;Łatwość zmiany;cz1650-senor-i-inf-29;senor;single;0.3305085;15
+C12;Łatwość zmiany;pn1650-adhoc-g-inf-1;adhoc;group;0.1271186;18
+C12;Łatwość zmiany;pn1650-senor-g-inf-2;senor;group;0.1864407;18
+C12;Łatwość zmiany;pn1650-senor-g-inf-3;senor;group;0.220339;18
+C12;Łatwość zmiany;pt0800-adhoc-i-inf-38;adhoc;single;0.09322034;23
+C12;Łatwość zmiany;pt0800-adhoc-i-inf-39;adhoc;single;0.09322034;23
+C12;Łatwość zmiany;pt0800-adhoc-i-inf-47;adhoc;single;0.1101695;25
+C12;Łatwość zmiany;pt0800-senor-i-inf-37;senor;single;0.1186441;18
+C12;Łatwość zmiany;pt0800-senor-i-inf-44;senor;single;0.1525424;19
+C12;Łatwość zmiany;pt0930-adhoc-g-mix-40;adhoc;group;0.1016949;19
+C12;Łatwość zmiany;pt0930-senor-i-inf-43;senor;single;0.2627119;12
+C12;Łatwość zmiany;pt1130-adhoc-g-mix-45;adhoc;group;0.05084746;21
+C12;Łatwość zmiany;pt1130-adhoc-g-mix-46;adhoc;group;0.08474576;19
+C12;Łatwość zmiany;pt1130-senor-i-inf-41;senor;single;0.2881356;12
+C12;Łatwość zmiany;pt1330-adhoc-i-inf-35;adhoc;single;0.05084746;18
+C12;Łatwość zmiany;pt1330-senor-i-inf-34;senor;single;0.1864407;18
+C12;Łatwość zmiany;wt0945-adhoc-i-inf-10;adhoc;single;0.1101695;22
+C12;Łatwość zmiany;wt0945-adhoc-i-inf-101;adhoc;single;0.1016949;22
+C12;Łatwość zmiany;wt0945-adhoc-i-inf-8;adhoc;single;0.1355932;24
+C12;Łatwość zmiany;wt0945-adhoc-i-inf-9;adhoc;single;0.1186441;24
+C12;Łatwość zmiany;wt0945-senor-g-mix-11;senor;group;0.2033898;14
+C12;Łatwość zmiany;wt1650-adhoc-g-mix-13;adhoc;group;0.1101695;21
+C12;Łatwość zmiany;wt1650-adhoc-i-inf-14;adhoc;single;0.1355932;23
+C12;Łatwość zmiany;wt1650-senor-g-mix-15;senor;group;0.2542373;14
+C12;Łatwość zmiany;wt1650-senor-i-mgt-16;senor;single;0.1101695;21
+C13;Łatwość testowania;cz1510-adhoc-g-inf-19;adhoc;group;0.1048387;23
+C13;Łatwość testowania;cz1510-adhoc-i-inf-22;adhoc;single;0.04032258;14
+C13;Łatwość testowania;cz1510-adhoc-i-inf-24;adhoc;single;0.08870967;24
+C13;Łatwość testowania;cz1510-senor-i-mgt-20;senor;single;0.2258064;17
+C13;Łatwość testowania;cz1510-senor-i-mgt-21;senor;single;0.1370968;23
+C13;Łatwość testowania;cz1650-adhoc-g-inf-31;adhoc;group;0.1532258;25
+C13;Łatwość testowania;cz1650-adhoc-i-inf-30;adhoc;single;0.1209677;23
+C13;Łatwość testowania;cz1650-adhoc-i-inf-32;adhoc;single;0.09677419;25
+C13;Łatwość testowania;cz1650-senor-i-inf-28;senor;single;0.3145161;15
+C13;Łatwość testowania;cz1650-senor-i-inf-29;senor;single;0.3225806;15
+C13;Łatwość testowania;pn1650-adhoc-g-inf-1;adhoc;group;0.1209677;18
+C13;Łatwość testowania;pn1650-senor-g-inf-2;senor;group;0.1774193;18
+C13;Łatwość testowania;pn1650-senor-g-inf-3;senor;group;0.2096774;18
+C13;Łatwość testowania;pt0800-adhoc-i-inf-38;adhoc;single;0.09677419;23
+C13;Łatwość testowania;pt0800-adhoc-i-inf-39;adhoc;single;0.09677419;23
+C13;Łatwość testowania;pt0800-adhoc-i-inf-47;adhoc;single;0.1048387;25
+C13;Łatwość testowania;pt0800-senor-i-inf-37;senor;single;0.1129032;18
+C13;Łatwość testowania;pt0800-senor-i-inf-44;senor;single;0.1532258;19
+C13;Łatwość testowania;pt0930-adhoc-g-mix-40;adhoc;group;0.1209677;19
+C13;Łatwość testowania;pt1130-adhoc-g-mix-45;adhoc;group;0.05645161;21
+C13;Łatwość testowania;pt1130-adhoc-g-mix-46;adhoc;group;0.08064516;19
+C13;Łatwość testowania;pt1330-adhoc-i-inf-35;adhoc;single;0.0483871;18
+C13;Łatwość testowania;pt1330-senor-i-inf-34;senor;single;0.1854839;18
+C13;Łatwość testowania;wt0945-adhoc-i-inf-10;adhoc;single;0.1048387;22
+C13;Łatwość testowania;wt0945-adhoc-i-inf-101;adhoc;single;0.09677419;22
+C13;Łatwość testowania;wt0945-adhoc-i-inf-8;adhoc;single;0.1290323;24
+C13;Łatwość testowania;wt0945-adhoc-i-inf-9;adhoc;single;0.1129032;24
+C13;Łatwość testowania;wt0945-senor-g-mix-11;senor;group;0.2016129;14
+C13;Łatwość testowania;wt1650-adhoc-g-mix-13;adhoc;group;0.1209677;21
+C13;Łatwość testowania;wt1650-adhoc-i-inf-14;adhoc;single;0.1370968;23
+C13;Łatwość testowania;wt1650-senor-g-mix-15;senor;group;0.25;14
+C13;Łatwość testowania;wt1650-senor-i-mgt-16;senor;single;0.1048387;21
+C14;Poufność;cz1510-adhoc-g-inf-19;adhoc;group;0.1015625;23
+C14;Poufność;cz1510-adhoc-i-inf-22;adhoc;single;0.046875;14
+C14;Poufność;cz1510-adhoc-i-inf-24;adhoc;single;0.0859375;24
+C14;Poufność;cz1510-senor-i-mgt-20;senor;single;0.2265625;17
+C14;Poufność;cz1510-senor-i-mgt-21;senor;single;0.140625;23
+C14;Poufność;cz1650-adhoc-g-inf-31;adhoc;group;0.15625;25
+C14;Poufność;cz1650-adhoc-i-inf-30;adhoc;single;0.1328125;23
+C14;Poufność;cz1650-adhoc-i-inf-32;adhoc;single;0.1015625;25
+C14;Poufność;cz1650-senor-i-inf-28;senor;single;0.3203125;15
+C14;Poufność;cz1650-senor-i-inf-29;senor;single;0.328125;15
+C14;Poufność;pn1650-adhoc-g-inf-1;adhoc;group;0.1171875;18
+C14;Poufność;pn1650-senor-g-inf-2;senor;group;0.1953125;18
+C14;Poufność;pn1650-senor-g-inf-3;senor;group;0.2265625;18
+C14;Poufność;pt0800-adhoc-i-inf-38;adhoc;single;0.09375;23
+C14;Poufność;pt0800-adhoc-i-inf-39;adhoc;single;0.1015625;23
+C14;Poufność;pt0800-adhoc-i-inf-47;adhoc;single;0.1015625;25
+C14;Poufność;pt0800-senor-i-inf-37;senor;single;0.125;18
+C14;Poufność;pt0800-senor-i-inf-44;senor;single;0.1484375;19
+C14;Poufność;pt0930-adhoc-g-mix-40;adhoc;group;0.125;19
+C14;Poufność;pt1130-adhoc-g-mix-45;adhoc;group;0.0546875;21
+C14;Poufność;pt1130-adhoc-g-mix-46;adhoc;group;0.0859375;19
+C14;Poufność;pt1330-adhoc-i-inf-35;adhoc;single;0.046875;18
+C14;Poufność;pt1330-senor-i-inf-34;senor;single;0.1796875;18
+C14;Poufność;wt0945-adhoc-i-inf-10;adhoc;single;0.1015625;22
+C14;Poufność;wt0945-adhoc-i-inf-101;adhoc;single;0.09375;22
+C14;Poufność;wt0945-adhoc-i-inf-8;adhoc;single;0.125;24
+C14;Poufność;wt0945-adhoc-i-inf-9;adhoc;single;0.125;24
+C14;Poufność;wt0945-senor-g-mix-11;senor;group;0.2265625;14
+C14;Poufność;wt1650-adhoc-g-mix-13;adhoc;group;0.1171875;21
+C14;Poufność;wt1650-adhoc-i-inf-14;adhoc;single;0.140625;23
+C14;Poufność;wt1650-senor-g-mix-15;senor;group;0.25;14
+C14;Poufność;wt1650-senor-i-mgt-16;senor;single;0.109375;21
+C15;Integralność;cz1510-adhoc-g-inf-19;adhoc;group;0.1041667;23
+C15;Integralność;cz1510-adhoc-i-inf-24;adhoc;single;0.09027778;24
+C15;Integralność;cz1510-senor-i-mgt-20;senor;single;0.2083333;17
+C15;Integralność;cz1510-senor-i-mgt-21;senor;single;0.1319444;23
+C15;Integralność;cz1650-adhoc-g-inf-31;adhoc;group;0.1458333;25
+C15;Integralność;cz1650-adhoc-i-inf-30;adhoc;single;0.125;23
+C15;Integralność;cz1650-adhoc-i-inf-32;adhoc;single;0.1041667;25
+C15;Integralność;cz1650-senor-i-inf-28;senor;single;0.3055556;15
+C15;Integralność;cz1650-senor-i-inf-29;senor;single;0.3263889;15
+C15;Integralność;pn1650-adhoc-g-inf-1;adhoc;group;0.125;18
+C15;Integralność;pn1650-senor-g-inf-2;senor;group;0.2013889;18
+C15;Integralność;pn1650-senor-g-inf-3;senor;group;0.2152778;18
+C15;Integralność;pt0800-adhoc-i-inf-38;adhoc;single;0.09722222;23
+C15;Integralność;pt0800-adhoc-i-inf-39;adhoc;single;0.1041667;23
+C15;Integralność;pt0800-adhoc-i-inf-47;adhoc;single;0.09722222;25
+C15;Integralność;pt0800-senor-i-inf-37;senor;single;0.1111111;18
+C15;Integralność;pt0800-senor-i-inf-44;senor;single;0.1458333;19
+C15;Integralność;pt0930-adhoc-g-mix-40;adhoc;group;0.1180556;19
+C15;Integralność;pt1130-adhoc-g-mix-45;adhoc;group;0.05555556;21
+C15;Integralność;pt1130-adhoc-g-mix-46;adhoc;group;0.08333334;19
+C15;Integralność;pt1330-adhoc-i-inf-35;adhoc;single;0.04861111;18
+C15;Integralność;pt1330-senor-i-inf-34;senor;single;0.1875;18
+C15;Integralność;wt0945-adhoc-i-inf-10;adhoc;single;0.1041667;22
+C15;Integralność;wt0945-adhoc-i-inf-101;adhoc;single;0.09722222;22
+C15;Integralność;wt0945-adhoc-i-inf-8;adhoc;single;0.1180556;24
+C15;Integralność;wt0945-adhoc-i-inf-9;adhoc;single;0.125;24
+C15;Integralność;wt1650-adhoc-g-mix-13;adhoc;group;0.1180556;21
+C15;Integralność;wt1650-adhoc-i-inf-14;adhoc;single;0.1875;23
+C15;Integralność;wt1650-senor-i-mgt-16;senor;single;0.125;21
+C16;Niezaprzeczalność;cz1510-adhoc-g-inf-19;adhoc;group;0.1081081;23
+C16;Niezaprzeczalność;cz1510-adhoc-i-inf-24;adhoc;single;0.08783784;24
+C16;Niezaprzeczalność;cz1510-senor-i-mgt-20;senor;single;0.2027027;17
+C16;Niezaprzeczalność;cz1510-senor-i-mgt-21;senor;single;0.1418919;23
+C16;Niezaprzeczalność;cz1650-adhoc-g-inf-31;adhoc;group;0.1418919;25
+C16;Niezaprzeczalność;cz1650-adhoc-i-inf-30;adhoc;single;0.1283784;23
+C16;Niezaprzeczalność;cz1650-adhoc-i-inf-32;adhoc;single;0.1148649;25
+C16;Niezaprzeczalność;pn1650-adhoc-g-inf-1;adhoc;group;0.1351351;18
+C16;Niezaprzeczalność;pn1650-senor-g-inf-2;senor;group;0.2162162;18
+C16;Niezaprzeczalność;pn1650-senor-g-inf-3;senor;group;0.2162162;18
+C16;Niezaprzeczalność;pt0800-adhoc-i-inf-38;adhoc;single;0.1081081;23
+C16;Niezaprzeczalność;pt0800-adhoc-i-inf-39;adhoc;single;0.1081081;23
+C16;Niezaprzeczalność;pt0800-adhoc-i-inf-47;adhoc;single;0.1013514;25
+C16;Niezaprzeczalność;pt0800-senor-i-inf-37;senor;single;0.1216216;18
+C16;Niezaprzeczalność;pt0800-senor-i-inf-44;senor;single;0.1554054;19
+C16;Niezaprzeczalność;pt0930-adhoc-g-mix-40;adhoc;group;0.1283784;19
+C16;Niezaprzeczalność;pt1130-adhoc-g-mix-45;adhoc;group;0.05405406;21
+C16;Niezaprzeczalność;pt1130-adhoc-g-mix-46;adhoc;group;0.08108108;19
+C16;Niezaprzeczalność;pt1330-adhoc-i-inf-35;adhoc;single;0.0472973;18
+C16;Niezaprzeczalność;pt1330-senor-i-inf-34;senor;single;0.1891892;18
+C16;Niezaprzeczalność;wt0945-adhoc-i-inf-10;adhoc;single;0.1081081;22
+C16;Niezaprzeczalność;wt0945-adhoc-i-inf-101;adhoc;single;0.1013514;22
+C16;Niezaprzeczalność;wt0945-adhoc-i-inf-8;adhoc;single;0.1216216;24
+C16;Niezaprzeczalność;wt0945-adhoc-i-inf-9;adhoc;single;0.1283784;24
+C16;Niezaprzeczalność;wt1650-adhoc-g-mix-13;adhoc;group;0.1283784;21
+C16;Niezaprzeczalność;wt1650-adhoc-i-inf-14;adhoc;single;0.1959459;23
+C16;Niezaprzeczalność;wt1650-senor-i-mgt-16;senor;single;0.1351351;21
+C17;Identyfikowalność;cz1510-adhoc-g-inf-19;adhoc;group;0.1133333;23
+C17;Identyfikowalność;cz1510-adhoc-i-inf-24;adhoc;single;0.08666667;24
+C17;Identyfikowalność;cz1510-senor-i-mgt-20;senor;single;0.2;17
+C17;Identyfikowalność;cz1510-senor-i-mgt-21;senor;single;0.1466667;23
+C17;Identyfikowalność;cz1650-adhoc-g-inf-31;adhoc;group;0.1466667;25
+C17;Identyfikowalność;cz1650-adhoc-i-inf-30;adhoc;single;0.1333333;23
+C17;Identyfikowalność;cz1650-adhoc-i-inf-32;adhoc;single;0.12;25
+C17;Identyfikowalność;pn1650-adhoc-g-inf-1;adhoc;group;0.14;18
+C17;Identyfikowalność;pn1650-senor-g-inf-2;senor;group;0.2266667;18
+C17;Identyfikowalność;pn1650-senor-g-inf-3;senor;group;0.22;18
+C17;Identyfikowalność;pt0800-adhoc-i-inf-38;adhoc;single;0.1066667;23
+C17;Identyfikowalność;pt0800-adhoc-i-inf-39;adhoc;single;0.1133333;23
+C17;Identyfikowalność;pt0800-adhoc-i-inf-47;adhoc;single;0.1;25
+C17;Identyfikowalność;pt0800-senor-i-inf-37;senor;single;0.1266667;18
+C17;Identyfikowalność;pt0800-senor-i-inf-44;senor;single;0.16;19
+C17;Identyfikowalność;pt0930-adhoc-g-mix-40;adhoc;group;0.1266667;19
+C17;Identyfikowalność;pt1130-adhoc-g-mix-45;adhoc;group;0.05333333;21
+C17;Identyfikowalność;pt1130-adhoc-g-mix-46;adhoc;group;0.08;19
+C17;Identyfikowalność;pt1330-adhoc-i-inf-35;adhoc;single;0.04666667;18
+C17;Identyfikowalność;pt1330-senor-i-inf-34;senor;single;0.1933333;18
+C17;Identyfikowalność;wt0945-adhoc-i-inf-10;adhoc;single;0.1133333;22
+C17;Identyfikowalność;wt0945-adhoc-i-inf-101;adhoc;single;0.1066667;22
+C17;Identyfikowalność;wt0945-adhoc-i-inf-8;adhoc;single;0.12;24
+C17;Identyfikowalność;wt0945-adhoc-i-inf-9;adhoc;single;0.1333333;24
+C17;Identyfikowalność;wt1650-adhoc-g-mix-13;adhoc;group;0.1333333;21
+C17;Identyfikowalność;wt1650-adhoc-i-inf-14;adhoc;single;0.2;23
+C17;Identyfikowalność;wt1650-senor-i-mgt-16;senor;single;0.14;21
+C18;Autentyczność;cz1510-adhoc-g-inf-19;adhoc;group;0.125;23
+C18;Autentyczność;cz1510-adhoc-i-inf-24;adhoc;single;0.09375;24
+C18;Autentyczność;cz1510-senor-i-mgt-21;senor;single;0.15;23
+C18;Autentyczność;cz1650-adhoc-g-inf-31;adhoc;group;0.15625;25
+C18;Autentyczność;cz1650-adhoc-i-inf-30;adhoc;single;0.1375;23
+C18;Autentyczność;cz1650-adhoc-i-inf-32;adhoc;single;0.14375;25
+C18;Autentyczność;pn1650-adhoc-g-inf-1;adhoc;group;0.14375;18
+C18;Autentyczność;pn1650-senor-g-inf-2;senor;group;0.2375;18
+C18;Autentyczność;pn1650-senor-g-inf-3;senor;group;0.25625;18
+C18;Autentyczność;pt0800-adhoc-i-inf-38;adhoc;single;0.11875;23
+C18;Autentyczność;pt0800-adhoc-i-inf-39;adhoc;single;0.11875;23
+C18;Autentyczność;pt0800-adhoc-i-inf-47;adhoc;single;0.1;25
+C18;Autentyczność;pt0800-senor-i-inf-37;senor;single;0.14375;18
+C18;Autentyczność;pt0800-senor-i-inf-44;senor;single;0.175;19
+C18;Autentyczność;pt0930-adhoc-g-mix-40;adhoc;group;0.13125;19
+C18;Autentyczność;pt1130-adhoc-g-mix-45;adhoc;group;0.05;21
+C18;Autentyczność;pt1130-adhoc-g-mix-46;adhoc;group;0.1;19
+C18;Autentyczność;pt1330-adhoc-i-inf-35;adhoc;single;0.05;18
+C18;Autentyczność;pt1330-senor-i-inf-34;senor;single;0.20625;18
+C18;Autentyczność;wt0945-adhoc-i-inf-10;adhoc;single;0.11875;22
+C18;Autentyczność;wt0945-adhoc-i-inf-101;adhoc;single;0.11875;22
+C18;Autentyczność;wt0945-adhoc-i-inf-8;adhoc;single;0.1375;24
+C18;Autentyczność;wt0945-adhoc-i-inf-9;adhoc;single;0.13125;24
+C18;Autentyczność;wt1650-adhoc-g-mix-13;adhoc;group;0.1375;21
+C18;Autentyczność;wt1650-adhoc-i-inf-14;adhoc;single;0.2125;23
+C18;Autentyczność;wt1650-senor-i-mgt-16;senor;single;0.1375;21
+C19;Charakterystyka czasowa;cz1510-adhoc-g-inf-19;adhoc;group;0.126506;23
+C19;Charakterystyka czasowa;cz1510-adhoc-i-inf-24;adhoc;single;0.09638554;24
+C19;Charakterystyka czasowa;cz1510-senor-i-mgt-21;senor;single;0.1445783;23
+C19;Charakterystyka czasowa;cz1650-adhoc-g-inf-31;adhoc;group;0.1626506;25
+C19;Charakterystyka czasowa;cz1650-adhoc-i-inf-30;adhoc;single;0.1445783;23
+C19;Charakterystyka czasowa;cz1650-adhoc-i-inf-32;adhoc;single;0.1445783;25
+C19;Charakterystyka czasowa;pt0800-adhoc-i-inf-38;adhoc;single;0.126506;23
+C19;Charakterystyka czasowa;pt0800-adhoc-i-inf-39;adhoc;single;0.1204819;23
+C19;Charakterystyka czasowa;pt0800-adhoc-i-inf-47;adhoc;single;0.1084337;25
+C19;Charakterystyka czasowa;pt0800-senor-i-inf-44;senor;single;0.1807229;19
+C19;Charakterystyka czasowa;pt0930-adhoc-g-mix-40;adhoc;group;0.1325301;19
+C19;Charakterystyka czasowa;pt1130-adhoc-g-mix-45;adhoc;group;0.06024097;21
+C19;Charakterystyka czasowa;pt1130-adhoc-g-mix-46;adhoc;group;0.1084337;19
+C19;Charakterystyka czasowa;wt0945-adhoc-i-inf-10;adhoc;single;0.1204819;22
+C19;Charakterystyka czasowa;wt0945-adhoc-i-inf-101;adhoc;single;0.1204819;22
+C19;Charakterystyka czasowa;wt0945-adhoc-i-inf-8;adhoc;single;0.1445783;24
+C19;Charakterystyka czasowa;wt0945-adhoc-i-inf-9;adhoc;single;0.1385542;24
+C19;Charakterystyka czasowa;wt1650-adhoc-g-mix-13;adhoc;group;0.1385542;21
+C19;Charakterystyka czasowa;wt1650-adhoc-i-inf-14;adhoc;single;0.2168675;23
+C19;Charakterystyka czasowa;wt1650-senor-i-mgt-16;senor;single;0.1385542;21
+C20;Zużycie zasobów;cz1510-adhoc-g-inf-19;adhoc;group;0.1352941;23
+C20;Zużycie zasobów;cz1510-adhoc-i-inf-24;adhoc;single;0.1058824;24
+C20;Zużycie zasobów;cz1510-senor-i-mgt-21;senor;single;0.1529412;23
+C20;Zużycie zasobów;cz1650-adhoc-g-inf-31;adhoc;group;0.1588235;25
+C20;Zużycie zasobów;cz1650-adhoc-i-inf-30;adhoc;single;0.1529412;23
+C20;Zużycie zasobów;cz1650-adhoc-i-inf-32;adhoc;single;0.1411765;25
+C20;Zużycie zasobów;pt0800-adhoc-i-inf-38;adhoc;single;0.1294118;23
+C20;Zużycie zasobów;pt0800-adhoc-i-inf-39;adhoc;single;0.1294118;23
+C20;Zużycie zasobów;pt0800-adhoc-i-inf-47;adhoc;single;0.1058824;25
+C20;Zużycie zasobów;pt1130-adhoc-g-mix-45;adhoc;group;0.05882353;21
+C20;Zużycie zasobów;wt0945-adhoc-i-inf-10;adhoc;single;0.1235294;22
+C20;Zużycie zasobów;wt0945-adhoc-i-inf-101;adhoc;single;0.1235294;22
+C20;Zużycie zasobów;wt0945-adhoc-i-inf-8;adhoc;single;0.1470588;24
+C20;Zużycie zasobów;wt0945-adhoc-i-inf-9;adhoc;single;0.1470588;24
+C20;Zużycie zasobów;wt1650-adhoc-g-mix-13;adhoc;group;0.1352941;21
+C20;Zużycie zasobów;wt1650-adhoc-i-inf-14;adhoc;single;0.2235294;23
+C20;Zużycie zasobów;wt1650-senor-i-mgt-16;senor;single;0.1411765;21
+C21;Interoperacyjność;cz1510-adhoc-g-inf-19;adhoc;group;0.137931;23
+C21;Interoperacyjność;cz1510-adhoc-i-inf-24;adhoc;single;0.1034483;24
+C21;Interoperacyjność;cz1510-senor-i-mgt-21;senor;single;0.1494253;23
+C21;Interoperacyjność;cz1650-adhoc-g-inf-31;adhoc;group;0.1609195;25
+C21;Interoperacyjność;cz1650-adhoc-i-inf-30;adhoc;single;0.1551724;23
+C21;Interoperacyjność;cz1650-adhoc-i-inf-32;adhoc;single;0.1494253;25
+C21;Interoperacyjność;pt0800-adhoc-i-inf-38;adhoc;single;0.137931;23
+C21;Interoperacyjność;pt0800-adhoc-i-inf-39;adhoc;single;0.1264368;23
+C21;Interoperacyjność;pt0800-adhoc-i-inf-47;adhoc;single;0.1034483;25
+C21;Interoperacyjność;pt1130-adhoc-g-mix-45;adhoc;group;0.06321839;21
+C21;Interoperacyjność;wt0945-adhoc-i-inf-10;adhoc;single;0.1206897;22
+C21;Interoperacyjność;wt0945-adhoc-i-inf-101;adhoc;single;0.1206897;22
+C21;Interoperacyjność;wt0945-adhoc-i-inf-8;adhoc;single;0.1494253;24
+C21;Interoperacyjność;wt0945-adhoc-i-inf-9;adhoc;single;0.1494253;24
+C21;Interoperacyjność;wt1650-adhoc-g-mix-13;adhoc;group;0.137931;21
+C21;Interoperacyjność;wt1650-adhoc-i-inf-14;adhoc;single;0.2241379;23
+C21;Interoperacyjność;wt1650-senor-i-mgt-16;senor;single;0.1494253;21
+C22;Współistnienie;cz1510-adhoc-g-inf-19;adhoc;group;0.1404494;23
+C22;Współistnienie;cz1510-adhoc-i-inf-24;adhoc;single;0.1011236;24
+C22;Współistnienie;cz1510-senor-i-mgt-21;senor;single;0.1460674;23
+C22;Współistnienie;cz1650-adhoc-g-inf-31;adhoc;group;0.1573034;25
+C22;Współistnienie;cz1650-adhoc-i-inf-30;adhoc;single;0.1516854;23
+C22;Współistnienie;cz1650-adhoc-i-inf-32;adhoc;single;0.1460674;25
+C22;Współistnienie;pt0800-adhoc-i-inf-38;adhoc;single;0.1404494;23
+C22;Współistnienie;pt0800-adhoc-i-inf-39;adhoc;single;0.1235955;23
+C22;Współistnienie;pt0800-adhoc-i-inf-47;adhoc;single;0.1011236;25
+C22;Współistnienie;wt0945-adhoc-i-inf-10;adhoc;single;0.1235955;22
+C22;Współistnienie;wt0945-adhoc-i-inf-101;adhoc;single;0.1235955;22
+C22;Współistnienie;wt0945-adhoc-i-inf-8;adhoc;single;0.1516854;24
+C22;Współistnienie;wt0945-adhoc-i-inf-9;adhoc;single;0.1516854;24
+C22;Współistnienie;wt1650-adhoc-i-inf-14;adhoc;single;0.2191011;23
+C23;Łatwość instalacji;cz1510-adhoc-g-inf-19;adhoc;group;0.1436464;23
+C23;Łatwość instalacji;cz1510-adhoc-i-inf-24;adhoc;single;0.1049724;24
+C23;Łatwość instalacji;cz1510-senor-i-mgt-21;senor;single;0.1436464;23
+C23;Łatwość instalacji;cz1650-adhoc-g-inf-31;adhoc;group;0.1546961;25
+C23;Łatwość instalacji;cz1650-adhoc-i-inf-30;adhoc;single;0.1546961;23
+C23;Łatwość instalacji;cz1650-adhoc-i-inf-32;adhoc;single;0.1491713;25
+C23;Łatwość instalacji;pt0800-adhoc-i-inf-38;adhoc;single;0.1436464;23
+C23;Łatwość instalacji;pt0800-adhoc-i-inf-39;adhoc;single;0.1270718;23
+C23;Łatwość instalacji;pt0800-adhoc-i-inf-47;adhoc;single;0.1049724;25
+C23;Łatwość instalacji;wt0945-adhoc-i-inf-8;adhoc;single;0.1546961;24
+C23;Łatwość instalacji;wt0945-adhoc-i-inf-9;adhoc;single;0.1546961;24
+C23;Łatwość instalacji;wt1650-adhoc-i-inf-14;adhoc;single;0.2209945;23
+C24;Łatwość adaptacji;cz1510-adhoc-i-inf-24;adhoc;single;0.1092896;24
+C24;Łatwość adaptacji;cz1650-adhoc-g-inf-31;adhoc;group;0.1530055;25
+C24;Łatwość adaptacji;cz1650-adhoc-i-inf-32;adhoc;single;0.147541;25
+C24;Łatwość adaptacji;pt0800-adhoc-i-inf-47;adhoc;single;0.1092896;25
+C24;Łatwość adaptacji;wt0945-adhoc-i-inf-8;adhoc;single;0.1530055;24
+C24;Łatwość adaptacji;wt0945-adhoc-i-inf-9;adhoc;single;0.1530055;24
+C25;Łatwość zamiany;cz1650-adhoc-g-inf-31;adhoc;group;0.1567568;25
+C25;Łatwość zamiany;cz1650-adhoc-i-inf-32;adhoc;single;0.1513513;25
+C25;Łatwość zamiany;pt0800-adhoc-i-inf-47;adhoc;single;0.1081081;25
