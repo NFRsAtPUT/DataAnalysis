@@ -1,0 +1,215 @@
+---
+title: "Simulation - Catalog Value"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+---
+# Input Data
+Specifications = WITH CATALOG - TOP - 10tys - all no3 - TOP414
+
+Numer of permuations = 10000
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+require(plyr)
+library(dplyr)
+library(MASS)
+#library(effsize)
+library(reshape2)
+library(ggplot2)
+library(Rmisc)
+library(RColorBrewer)
+
+source("InitSettings.R")
+initSettings()
+
+```
+
+```{r results="hide", echo=FALSE, warning=FALSE, message=FALSE}
+
+#Dta for Value old
+#dataValue <-  read.csv("input/nortRespermRandom-len41-max10000-no3.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".", skip=20 000 000)
+#dataValue <-  read.csv("input/nortRespermRandom-len41-max10000-no3.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+#dataValueDirect <- read.csv("input/valueRespermRandom-len41-max10000-no3.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+dataValueDirect <- read.csv("input/valueRes1-permRandom-len41-max10000-no3.txt-top414", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#dataValueDirect <- read.csv("input/valueRes1-perWithReplacement5-42.txt-top414", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#dataValueDirect <- filter(dataValueDirect, dataValueDirect$PermID>0)
+#dataValueDirect$SpecOrder <- seq(1,42)
+
+
+numOfPermutations <-10000
+```
+
+
+
+#Plot values of Catalog Value for multiple and initial evolutions
+```{r echo=FALSE}
+#### Value Direct
+
+## Prepare data
+dataValueDirect$SpecOrder <- factor(dataValueDirect$SpecOrder, levels=seq(1,42))
+
+## Plot for multiple evolutions
+valueDirPlot <- ggplot(data = dataValueDirect) 
+valueDirPlot <- valueDirPlot + geom_boxplot(aes(x=SpecOrder, y=Value*100), fill=myBluePalete[7], outlier.shape=NA, color="grey30")
+valueDirPlot <- valueDirPlot + ylim(0,100)
+#EN
+valueDirPlot <- valueDirPlot+ ylab("Value [%]") + xlab("Projects") + labs(title="B. Multiple evolutions")
+#PL
+#valueDirPlot <- valueDirPlot+ ylab("Wartość katalogu [%]") + xlab("Projekty") + labs(title="B. Wiele ewolucji")
+valueDirPlot <- valueDirPlot + scale_x_discrete(breaks=c(0,10,20,30,40)) 
+valueDirPlot <- valueDirPlot  + themeP2
+valueDirPlot
+
+## Plot for init evolutions
+valueDirPlotInit <- ggplot(data = filter(dataValueDirect, dataValueDirect$PermID==1)) 
+valueDirPlotInit <- valueDirPlotInit + geom_bar(aes(x=factor(SpecOrder, levels=seq(1,42)), y=Value*100),  stat = "identity", fill=myBluePalete[7])
+#EN
+valueDirPlotInit <- valueDirPlotInit + themeP2 +  ylab("Value [%]") + xlab("Projects") + labs(title="A. Initial evolution") + theme(legend.position="no")  +ylim(0,100)
+#PL
+#valueDirPlotInit <- valueDirPlotInit + themeP2 +  ylab("Wartość katalogu [%]") + xlab("Projekty") + labs(title="A. Pierwsza ewolucja") + theme(legend.position="no")  +ylim(0,100)
+valueDirPlotInit
+
+## Init and multiple evolutions both on the same plot
+valueDirPlot_InitWithMultiple <- ggplot() 
+valueDirPlot_InitWithMultiple <- valueDirPlot_InitWithMultiple + geom_boxplot(data= dataValueDirect, aes(x=SpecOrder, y=Value*100), fill=myBluePalete[7], outlier.shape=NA, color="grey30")
+#valueDirPlot_InitWithMultiple <- valueDirPlot_InitWithMultiple +  geom_point(data=filter(dataValueDirect, dataValueDirect$PermID==1), aes(x=SpecOrder,  y=Value*100, size=1), color="goldenrod4") + geom_line(data=filter(dataValueDirect, dataValueDirect$PermID==1), aes(x=SpecOrder,  y=Value*100, group=1), color="goldenrod4")
+valueDirPlot_InitWithMultiple <- valueDirPlot_InitWithMultiple + ylim(0,100)
+#EN
+valueDirPlot_InitWithMultiple <- valueDirPlot_InitWithMultiple+ ylab("Value [%]") + xlab("Projects") + labs(title="")
+valueDirPlot_InitWithMultiple <- valueDirPlot_InitWithMultiple + scale_x_discrete(breaks=c(0,10,20,30,40)) 
+valueDirPlot_InitWithMultiple <- valueDirPlot_InitWithMultiple  + themeP2 
+valueDirPlot_InitWithMultiple
+
+
+## Fine grained plot
+valueDirPlotFG <- ggplot(data = dataValueDirect) 
+valueDirPlotFG <- valueDirPlotFG + geom_boxplot(aes(x=SpecOrder, y=Value*100), fill=myBluePalete[7], outlier.shape=NA, color="grey30")
+valueDirPlotFG <- valueDirPlotFG + ylim(0,100)
+#EN
+#valueDirPlotFG <- valueDirPlotFG + ylab("Value [%]") + xlab("Projects") + labs(title="A. Fine grained approach")
+#PL
+valueDirPlotFG <- valueDirPlotFG + ylab("Wartość katalogu [%]") + xlab("Projects") + labs(title="A. Fine grained approach")
+valueDirPlotFG <- valueDirPlotFG + scale_x_discrete(breaks=c(0,10,20,30,40))  + themeP2
+   valueDirPlotFG
+```
+
+## Plot frequency analysis
+### Aim of frequency analysis is to plot the percentage of the number of the catalogs (moments of simulations, frequency) that has at least ceratain value of the analyzed characteristic, e.g., what is the frequency of catalog value at 0.9? the answer will tell us how many times catalog had at least 0.9 value during multiple simulations.
+```{r echo=FALSE, fig.height=10, fig.width=10}
+#Add new column, each for certain frequency level, and if value for this moment is at least the frequency assign 1
+dataValueDirect$FreqLevel9 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.9,]$FreqLevel9 <- 1
+dataValueDirect$FreqLevel95 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.95,]$FreqLevel95 <- 1
+dataValueDirect$FreqLevel8 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.8,]$FreqLevel8 <- 1
+dataValueDirect$FreqLevel85 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.85,]$FreqLevel85 <- 1
+dataValueDirect$FreqLevel7 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.7,]$FreqLevel7 <- 1
+dataValueDirect$FreqLevel75 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.75,]$FreqLevel75 <- 1
+dataValueDirect$FreqLevel6 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.6,]$FreqLevel6 <- 1
+dataValueDirect$FreqLevel65 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.65,]$FreqLevel65 <- 1
+dataValueDirect$FreqLevel5 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.5,]$FreqLevel5 <- 1
+dataValueDirect$FreqLevel55 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.55,]$FreqLevel55 <- 1
+
+dataValueDirect$SpecOrder <- as.numeric(as.character(dataValueDirect$SpecOrder))
+
+#Aggregating will provide the number of times the value was higher than the given freq level
+dataValueDirAggr <- aggregate(dataValueDirect, by=list(dataValueDirect$SpecOrder), FUN="sum" )
+
+#Divide by num of Permuations for percentage value (frequecy)
+dataValueDirAggr$SpecOrder <- dataValueDirAggr$SpecOrder/numOfPermutations
+dataValueDirAggr$FreqLevel9 <- dataValueDirAggr$FreqLevel9/numOfPermutations
+dataValueDirAggr$FreqLevel95 <- dataValueDirAggr$FreqLevel95/numOfPermutations
+dataValueDirAggr$FreqLevel8 <- dataValueDirAggr$FreqLevel8/numOfPermutations
+dataValueDirAggr$FreqLevel85 <- dataValueDirAggr$FreqLevel85/numOfPermutations
+dataValueDirAggr$FreqLevel75 <- dataValueDirAggr$FreqLevel75/numOfPermutations
+dataValueDirAggr$FreqLevel65 <- dataValueDirAggr$FreqLevel65/numOfPermutations
+dataValueDirAggr$FreqLevel7 <- dataValueDirAggr$FreqLevel7/numOfPermutations
+dataValueDirAggr$FreqLevel6 <- dataValueDirAggr$FreqLevel6/numOfPermutations
+dataValueDirAggr$FreqLevel5 <- dataValueDirAggr$FreqLevel5/numOfPermutations
+dataValueDirAggr$FreqLevel55 <- dataValueDirAggr$FreqLevel55/numOfPermutations
+
+#Filter only after 35 considered projects
+dataValueDirAggr <-filter(dataValueDirAggr, dataValueDirAggr$SpecOrder >= 35)
+
+#Prepare data frame for plots
+dataForBarV <- data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=95, PValue=dataValueDirAggr$FreqLevel95)
+dataForBarV <- rbind(dataForBarV, data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=90, PValue=dataValueDirAggr$FreqLevel9))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=85, PValue=dataValueDirAggr$FreqLevel85))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=80, PValue=dataValueDirAggr$FreqLevel8))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=75, PValue=dataValueDirAggr$FreqLevel75))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=70, PValue=dataValueDirAggr$FreqLevel7))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=65, PValue=dataValueDirAggr$FreqLevel65))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=60, PValue=dataValueDirAggr$FreqLevel6))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=55, PValue=dataValueDirAggr$FreqLevel55))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=50, PValue=dataValueDirAggr$FreqLevel5))
+
+
+#Plot line
+valuePlotP <- ggplot(data=dataForBarV) + geom_point(aes(x=ValueMargin, y=PValue, color=factor(dataForBarV$SpecOrder, levels=seq(1,42))), size=3) + geom_line(aes(x=ValueMargin, y=PValue, color=factor(dataForBarV$SpecOrder, levels=seq(1,42)), group=SpecOrder), size=2) + scale_color_manual(name="Num. of considered projects", values=myBluePalete)
+valuePlotP <- valuePlotP + ylab("Frequency [%]") + xlab("Value [%]") + labs(title=expression("Frequency of Value ")) + ylim(0,1) + themeP + guides(color = guide_legend(nrow = 1))
+valuePlotP
+#pdf(paste("./output/ValuesWithProbalilityLine-Beta", ".pdf", sep=''), width = 19, height = 10)
+# multiplot(plotlist = list(valuePlotPSimple, valuePlotP), cols=2)
+# dev.off()
+
+
+#Plot Bar
+valuePlotBar <- ggplot(data=dataForBarV) + geom_bar(aes(x=ValueMargin, y=PValue*100, fill=factor(dataForBarV$SpecOrder, levels=seq(1,42))), stat="identity", position=position_dodge()) + scale_fill_manual(name="Num. of considered projects", values=myBluePalete)
+valuePlotBar <- valuePlotBar + ylab("Frequency(Value) [%]") + xlab("Value [%]") + labs(title="A. Frequency of Value") + guides(fill = guide_legend(nrow = 1)) + themeP
+valuePlotBar
+
+
+#Plot Bar - only for the last project in the simulation - after considering 40
+valuePlotBar40 <- ggplot(data=filter(dataForBarV, dataForBarV$SpecOrder==41)) + geom_bar(aes(x=ValueMargin, y=PValue*100, fill=myBluePalete[6] ), stat="identity", position=position_dodge(), width=3) + scale_fill_manual(name="#Considered \nprojects:", values=myBluePalete[6], drop=FALSE, labels=c("All projects"))
+
+valuePlotBar40 <- valuePlotBar40 + ylab("Frequency(Value) [%]") + xlab("Value [%]") + labs(title="A. Frequency of Value") + themeP2 + theme(legend.position="no")
+  #guides(fill = guide_legend(nrow = 1)) + themeP + legend("bottom", title = "ala", te)
+valuePlotBar40
+
+
+ #pdf(paste("./output/ValuesWithProbalilityBar-Beta", ".pdf", sep=''), width = 19, height = 10)
+ #multiplot(plotlist = list(valuePlotBarSimple, valuePlotBar), cols=2)
+ #dev.off()
+
+```
+
+## Pseudo-outlier analysis
+```{r echo=FALSE, fig.height=10, fig.width=10}
+dataForValueWithReplS <- read.csv(file=paste("input/dataForValueWithReplS-414-WithCatalog.csv", sep=""), sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+dataForValueWithReplS <- rbind(dataForValueWithReplS, data.frame(Repl=0, filter(dataForBarV, dataForBarV$SpecOrder==41 )))
+
+dataForValueWithReplS$PValue <- dataForValueWithReplS$PValue*100
+
+
+
+valueWithReplPlotS <- ggplot(data=dataForValueWithReplS) + geom_point(aes(x=ValueMargin, y=PValue, color=factor(Repl, levels = seq(0,5))), size=3) + geom_line(aes(x=ValueMargin, y=PValue, color=factor(Repl, levels = seq(0,5)), group=Repl),  size=2)
+valueWithReplPlotS <- valueWithReplPlotS + scale_color_manual(name="#Excluded \npseudo-outliers:", values=myPaleteBlues, labels=c("0","3","5", "7", "9", "11"))
+valueWithReplPlotS <- valueWithReplPlotS + ylab("Frequency(Value) [%]") + xlab("Value [%]") + labs(title=expression("C. Frequency of Value")) 
+valueWithReplPlotS <- valueWithReplPlotS + ylim(0,100) + guides(color = guide_legend(nrow = 2))+ themeP2 
+
+valueWithReplPlotS
+
+
+
+```
+
+```{r echo=FALSE, fig.height=10, fig.width=10}
+
+```

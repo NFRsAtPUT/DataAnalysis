@@ -1,0 +1,629 @@
+---
+title: "Simulation Fine Grained"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+---
+# Input Data
+Specifications = WITH CATALOG - TOP - 10tys - all no3 - TOP414
+
+Numer of permuations = 10000
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+require(plyr)
+library(dplyr)
+library(MASS)
+#library(effsize)
+library(reshape2)
+library(ggplot2)
+library(Rmisc)
+library(RColorBrewer)
+
+digPrec<-4 
+```
+
+```{r results="hide", echo=FALSE, warning=FALSE, message=FALSE}
+resultPath <- "output/"
+#Data for Operations, ME, Utilization
+#data <-read.csv("input/nfrRes-permRandom-len41-max10000-no3.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+data <-read.csv("input/top-withCatalog/nfrRes-1-permRandom-len41-max10000-no3.txt-top414", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+#data <-read.csv("input/nfrRes-1-perWithReplacement5-42.txt-top414", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+#data<-filter(data, data$PermID >0)
+#data$SpecOrder <- seq(1,42)
+
+
+#data <- read.csv("input/nfrRes-permRandom-len9-max10000-rybka.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#data <- read.csv("input/nfrRes-permRandom-len38-max1000-no3a20a22.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#data <- read.csv("input/nfrRes-permRandom-len9-max100000-rybka.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#data <- read.csv("input/nfrRes-permRandom-len9-max10000-rybkaNastepna.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#data <- read.csv("input/nfrRes-permRandom-len15-max10000-promise.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#data <- read.csv("input/nfrRes-permRandom-len15-max100000-promiseNastepna.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+dataFirst <- filter(data, data$PermID == 0)
+max(data$PermID)
+#Dta for Value
+#dataValue <-  read.csv("input/nortRespermRandom-len42-max1000000.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#dataValue <-  read.csv("input/nortRespermRandom-len41-max10000-no3.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".", skip=20000000)
+#dataValue <-  read.csv("input/nortRespermRandom-len9-max10000-rybka.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#dataValue <-  read.csv("input/nortRespermRandom-len9-max10000-rybkaNastepna.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#dataValue <-  read.csv("input/nortRespermRandom-len15-max10000-promise.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#dataValue <-  read.csv("input/nortRespermRandom-len15-max100000-promiseNastepna.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#max(dataValue$PermID)
+
+#dataValueDirect <- read.csv("input/valueRespermRandom-len41-max10000-no3.txt", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+dataValueDirect <- read.csv("input/top-WithCatalog/valueRes1-permRandom-len41-max10000-no3.txt-top414", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#dataValueDirect <- read.csv("input/valueRes1-perWithReplacement5-42.txt-top414", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+#dataValueDirect <- filter(dataValueDirect, dataValueDirect$PermID>0)
+#dataValueDirect$SpecOrder <- seq(1,42)
+
+max(dataValueDirect$PermID)
+top <-414
+numOfPermutations <-10000
+dA <- aggregate(data, by=list(data$OurOrder), FUN="mean")
+median(dA$NumAddedNoRTs)
+
+myBluePalte <- brewer.pal(n = 9, "Blues")[2:9]
+```
+
+# Operations
+```{r echo=FALSE, fig.width=10, fig.height=10}
+dataForBar <- data.frame(SpecOrder = data$SpecOrder, Perm= data$Perm ,OurOrder = data$OurOrder, Operations = data$NumAddedNoRTs, Type="Added")
+
+#for (i in 0:10000)
+#{
+#  filt <- filter(dataForBar, dataForBar$Perm==i)
+#  a <- shapiro.test(filt$Operations)
+#  if (a$p.value > 0.05)
+#  { print(i)}
+#}
+#a$statistic
+
+dataForBar <- rbind(dataForBar, data.frame(SpecOrder = data$SpecOrder, Perm= data$Perm, OurOrder = data$OurOrder, Operations = data$NumAffectedNoRTs - data$NumAddedNoRTs - data$NumMatchNoRTs, Type="Modified"))
+
+
+dataForBar <- rbind(dataForBar, data.frame(SpecOrder = data$SpecOrder,Perm= data$Perm, OurOrder = data$OurOrder, Operations = data$NumMatchNoRTs, Type="Matched"))
+
+dataForBar <- rbind(dataForBar, data.frame(SpecOrder = data$SpecOrder, Perm= data$Perm, OurOrder = data$OurOrder, Operations = data$NoRTsActive - data$NumAffectedNoRTs, Type="UnTouched"))
+
+p <- ggplot(data = dataForBar) 
+p <- p + geom_boxplot(data=dataForBar, aes(x=as.factor(SpecOrder), y=Operations, label = Operations, fill=Type))
+
+#p <- p + geom_point(data=filter(dataForBar, dataForBar$Perm==1), aes(x=SpecOrder, y=Operations, label = Operations, fill=Type), color="red")
+#p <- p + geom_line(data=filter(dataForBar, dataForBar$Perm==1), aes(x=SpecOrder, y=Operations, label = Operations, fill=Type), color="red")
+
+p <- p + facet_wrap( ~ Type, scales="free")
+
+p <- p + ggtitle("Catalog Operations") + ylab("# NoRTs") + xlab("Projects")
+
+
+p <- p + scale_fill_manual(name="Type:", breaks=c("Matched", "Modified", "Added", "UnTouched"), labels=c( "Matched","Modified", "Added", "UnTouched"), 
+                           #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+                           values=c("#56B4E9","#E69F00","#8bb92d", "#bbbbbb"))
+
+p
+
+
+#For saving in file - Uncomment
+# p <- p  + theme(
+#   title =element_text(size=15, face='bold'),
+#   panel.grid.major = element_line(colour = "grey95", size=0.5),
+#   panel.border = element_rect(colour = "grey85", size = 0.75, fill=NA),
+#   legend.text=element_text(size=13, margin=margin(0,0,0,0)),
+#   legend.title=element_text(size=15,face="bold"),
+#   legend.position="bottom",
+#   legend.key.width=unit(15,"pt"),
+#   legend.key.height=unit(15,"pt"),
+#   axis.text.x = element_text(size=10,angle=0,hjust=.5,vjust=.5,face="plain"),
+#   axis.text.y = element_text(size=10,angle=0,hjust=1,vjust=0,face="plain"),  
+#   axis.title.x = element_text(size=15,angle=0,hjust=.5,vjust=0,face="plain", margin=margin(10,0,20,0)),
+#   axis.title.y = element_text(size=15,angle=90,hjust=.5,vjust=.5,face="plain", margin=margin(0,10,0,0))
+#   # strip.text = element_text(size=35,angle=0,hjust=.5,vjust=.5,face="plain", margin=margin(0,0,0,0)),
+#   #  strip.background = element_rect(colour = "grey85", size = 0.75)
+# )
+#pdf(paste("./output/OperationsSim", ".pdf", sep=''), width = 10, height = 7)
+#multiplot(plotlist = list(p), cols=1)
+#dev.off()
+```
+
+# Maintainance Effort
+
+```{r echo=FALSE}
+###Maintainance Effort
+dataForBarME <- data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder, Operations = data$NumAffectedNoRTs - data$NumMatchNoRTs, Type="AddedOrModified", Match=data$NumMatchNoRTs, Perm=data$Perm)
+
+# for (i in 0:numOfPermutations)
+# {
+#   filt <- filter(dataForBarME, dataForBarME$Perm==100)
+#   a <- shapiro.test(filt$Operations)
+#   if (a$p.value > 0.05)
+#   { print(i)}
+# }
+# hist(filt$Operations)
+# qqnorm(filt$Operations);qqline(filt$Operations)
+# a$statistic
+
+dataForBarME$SpecOrder <- factor(dataForBarME$SpecOrder, levels=seq(1,42))
+
+
+mePlot <- ggplot() + geom_boxplot(data=dataForBarME, aes(x=SpecOrder, y=Operations, label = Operations, fill=Type), outlier.shape = NA)
+mePlot <- mePlot + ylab("Maintenance Effort") + xlab("Projects") + labs(title=expression("A. Maintenance Effort"))
+mePlot <- mePlot + scale_fill_manual(name="Considered sets of NFR templates", breaks=c("Matched", "Modified", "Added", "UnTouched", "AddedOrModified"), 
+                           labels=c( "Matched","Indirectly derived", "Added", "UnTouched", "Added and Modified"), 
+                           #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+                           values=c("grey70", "#8bb92d", "grey55","grey65", "orange"))+ scale_x_discrete(breaks=c(1,5,10,15,20,25,30,35,40))
+mePlot <- mePlot + ylim(0,80)
+
+
+#mePlot <- mePlot + geom_line(data=dplyr::filter(dataForBarME, dataForBarME$Perm==1020), aes(x=SpecOrder, y=Operations, label = Operations, fill=Type, group=1), color="white")
+#mePlot <- mePlot + geom_line(data=dplyr::filter(dataForBarME, dataForBarME$Perm==3717), aes(x=SpecOrder, y=Operations, label = Operations, fill=Type, group=1), color="black")
+
+mePlot
+
+ #For saving in file - Uncomment
+mePlot <- mePlot  + themeP + theme(
+  
+  legend.position="none"
+  
+  
+  
+)
+#pdf(paste("output/MaintainanceEffortSim-Both", ".pdf", sep=''), width = 19, height = 10)
+#multiplot(plotlist = list(mePlotSimple, mePlot), cols=2)
+#dev.off()
+```
+
+# Maintainance Effort - Single lines
+
+```{r echo=FALSE, fig.width=10,fig.height=10}
+###Maintainance Effort
+# dataForBarME <- data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder, Operations = data$NumAddedNoRTs, Type="Added", Match=0, Perm=data$Perm)
+# 
+# dataForBarME$SpecOrder <- factor(dataForBarME$SpecOrder, levels=seq(1,42))
+# 
+# for (i in 0:10)
+# {
+#     mePlot <- ggplot() + geom_line(data=filter(dataForBarME, dataForBarME$Perm >= i*6 & dataForBarME$Perm < (i+1)*6), aes(x=SpecOrder, y=Operations, label = Operations, fill=Type, group=1), color="red")
+#     
+#     mePlot <- mePlot + facet_wrap(~Perm, scales="free")
+#     mePlot <- mePlot + geom_smooth(data=filter(dataForBarME, dataForBarME$Perm >= i*6 & dataForBarME$Perm < (i+1)*6), aes(x=SpecOrder, y=Operations, label = Operations, fill=Type, group=1), method="lm")  
+#     mePlot <- mePlot + ylab("Maintenance Effort") + xlab("Projects")
+#     mePlot <- mePlot + ylim(0,50)
+#     mePlot <- mePlot + scale_fill_manual(name="Type:", breaks=c("Matched", "Modified", "Added", "UnTouched", "AddedOrModified"), 
+#                            labels=c( "Matched","Indirectly derived", "Added", "UnTouched", "Added Or Modified"), 
+#                            #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+#                            values=c("#f71880", "#8bb92d", "grey55","grey65", "orange"))
+# 
+#   mePlot
+#   plot(mePlot)
+# }
+
+```
+
+
+# Utilization
+```{r echo=FALSE}
+#### Effectiveness-Utilization
+numNoRTsAddedToCatalog<- max(filter(data, data$PermID==1)$NoRTsActive) - 84
+numNoRTsUncecessaryInCatalog <- 84 - top + numNoRTsAddedToCatalog
+dataForBarUtil <- data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder, Operations = data$NumAffectedNoRTs , Type="MatchedModified", Perm=data$PermID)
+
+dataForBarUtil <- rbind(dataForBarUtil, data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder,
+                                           Operations = data$NoRTsActive-numNoRTsUncecessaryInCatalog, Type="Rest", Perm=data$PermID))
+
+#Dla full catalogu 84 templaty na początku
+#data$NoRTsActivePrev<-84 
+data$NoRTsActivePrev<- top - numNoRTsAddedToCatalog
+row <- c(top - numNoRTsAddedToCatalog, data$NoRTsActive-numNoRTsUncecessaryInCatalog)
+a <- row[length(row)]
+row <- row[-length(row)]
+
+data$NoRTsActivePrev <- row
+data$NoRTsActivePrev[data$SpecOrder == 1] <- top - numNoRTsAddedToCatalog #84 dla full
+
+data$Utilization <- (data$NumAffectedNoRTs-data$NumAddedNoRT)/data$NoRTsActivePrev
+data$MEPerc <- (data$NumAffectedNoRTs - data$NumMatchNoRTs)/data$NoRTsActive
+#median(merged2$Utilization)
+
+#max(data$Utilization, na.rm = TRUE)
+#min(data$Utilization, na.rm = TRUE)
+#mean(data$Utilization, na.rm = TRUE)
+#median(data$Utilization, na.rm = TRUE)
+#max(data$NumAffectedNoRTs-data$NumAddedNoRTs)
+#min(data$NumAffectedNoRTs-data$NumAddedNoRTs)
+#mean(data$NumAffectedNoRTs-data$NumAddedNoRTs)
+#median(data$NumAffectedNoRTs-data$NumAddedNoRTs)
+
+dataForBarUtil$SpecOrder <- factor(dataForBarUtil$SpecOrder, levels=seq(1,42))
+
+
+dataUtilPr <- data.frame(SpecOrder=-1, MEProb=-1, PLevel=-1)
+dataUtilPr2 <- data.frame(SpecOrder=-1, MEProb=-1, PLevel=-1)
+
+for (i in 1:20)
+{
+  for (j in 35:41)
+  {
+    dataUtilPr <- rbind(dataUtilPr, data.frame(SpecOrder=j, MEProb=nrow(filter(data, data$Utilization <= i/100 & data$SpecOrder==j))/numOfPermutations, PLevel=i/100))
+dataUtilPr2 <- rbind(dataUtilPr2, data.frame(SpecOrder=j, MEProb=nrow(filter(data, data$Utilization >= i/100 & data$SpecOrder==j))/numOfPermutations, PLevel=i/100))
+
+}
+}
+dataUtilPr <- filter(dataUtilPr, dataUtilPr$SpecOrder > -1)
+dataUtilPr2 <- filter(dataUtilPr2, dataUtilPr2$SpecOrder > -1)
+dataUtilPr$SpecOrder <- factor(dataUtilPr$SpecOrder, levels = seq(1,42))
+dataUtilPr2$SpecOrder <- factor(dataUtilPr2$SpecOrder, levels = seq(1,42))
+
+
+
+
+utilPlot<- ggplot(data = dataForBarUtil) 
+
+utilPlot <- utilPlot + geom_boxplot(data=dataForBarUtil, aes(x=SpecOrder, y=Operations, label = Operations, fill=Type), outlier.shape = NA)
+utilPlot <- utilPlot + ylab("#NFR templates") + xlab("Projects") + labs(title=expression("Utilization (approach "~beta~")"))
+utilPlot <- utilPlot + scale_fill_manual(name="", breaks=c("MatchedModified",  "Rest"), 
+                           labels=c( "Perfect and Modfified NFR templates", "Catalog Size"), 
+                           #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+                           values=c("grey60", "grey80", "#8bb92d", "grey65"))
+
+utilPlot <- utilPlot + scale_x_discrete(breaks=c(1,5,10,15,20,25,30,35,40))
+
+utilPlot
+
+
+
+
+
+#For inititial evolution first run the teaching value script
+#mePercPlotInit <- ggplot(data=dataME)
+#mePercPlotInit <- mePercPlotInit + geom_bar(aes(x=factor(SpecOrder, levels=seq(1,42)), y=MEPerc*100, label=MEPerc*100, fill=myPalete[4]),  stat = "identity", fill=myPalete[4])
+#mePercPlotInit <- mePercPlotInit + themeP2 +  ylab("ME [%]") + xlab("Projects") + labs(title="A. Initial evolution") + theme(legend.position="no") + scale_x_discrete(breaks=c(0,10,20,30,40), labels=c(0,10,20,30,40)) + ylim(0,60)
+#plot(mePercPlotInit)
+
+dataForBarUtilPerc <- data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder, Operations = data$Utilization , Type="UtilPerc", Perm=data$PermID)
+dataForBarUtilPerc$SpecOrder <- factor(dataForBarUtilPerc$SpecOrder, levels=seq(1,42))
+
+
+dataForBarUtilPerc$SpecOrder <- factor(dataForBarUtilPerc$SpecOrder, levels=seq(1,42))
+utilPercPlot <- ggplot(data = dataForBarUtilPerc)
+utilPercPlot <- utilPercPlot + geom_boxplot(aes(x=SpecOrder, y=Operations*100, label=Operations, fill=Type), color="grey30", outlier.shape = NA)
+utilPercPlot <- utilPercPlot + scale_fill_manual(name="Type:", breaks=c("Matched", "Modified", "Added", "UnTouched", "UtilPerc"), 
+                           labels=c( "Matched","Indirectly derived", "Added", "UnTouched", "UtilPerc"), 
+                           #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+                           values=c(myPaleteO[4], "#8bb92d", "grey55","grey65", "orange", "green"))
+
+utilPercPlot <- utilPercPlot + ylab("U in [%]") + xlab("Projects") + themeP2 + scale_x_discrete(breaks=c(0,10,20,30,40)) + theme(legend.position="no") + labs(title="B. Multiple evolutions") +ylim(0,30)
+
+utilPercPlotFG <- ggplot(data = dataForBarUtilPerc)
+utilPercPlotFG <- utilPercPlotFG + geom_boxplot(aes(x=SpecOrder, y=Operations*100, label=Operations, fill=Type), color="grey30", outlier.shape = NA)
+utilPercPlotFG <- utilPercPlotFG + scale_fill_manual(name="Type:", breaks=c("Matched", "Modified", "Added", "UnTouched", "UtilPerc"), 
+                           labels=c( "Matched","Indirectly derived", "Added", "UnTouched", "UtilPerc"), 
+                           #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+                           values=c(myPaleteO[4], "#8bb92d", "grey55","grey65", "orange", "green"))
+
+utilPercPlotFG <- utilPercPlotFG + ylab("U in [%]") + xlab("Projects") + themeP2 + scale_x_discrete(breaks=c(0,10,20,30,40)) + theme(legend.position="no") + labs(title="A. Fine grained approach") +ylim(0,30)
+
+
+#For initial evolution first run other scripts
+#utilPercPlotInit <- ggplot(data=dataME)
+#utilPercPlotInit <- utilPercPlotInit + geom_bar(aes(x=factor(SpecOrder, levels=seq(1,42)), y=UtilPerc*100, fill=myPaleteO[5]),  stat = "identity", fill=myPaleteO[5])
+#utilPercPlotInit <- utilPercPlotInit + themeP2 +  ylab("U [%]") + xlab("Projects") + labs(title="A. Initial evolution") + theme(legend.position="no") + scale_x_discrete(breaks=c(0,10,20,30,40), labels=c(0,10,20,30,40))  +ylim(0,30)
+#plot(utilPercPlotInit)
+
+
+utilPercPlot40 <- ggplot(data = filter(dataUtilPr, dataUtilPr$SpecOrder==41 & ((dataUtilPr$PLevel*100)%%2) < 1))
+utilPercPlot40 <- utilPercPlot40 + geom_bar(aes(x=PLevel*100, y=MEProb*100, fill=myPaleteO[4]),  stat = "identity") +  scale_fill_manual(name="Number of considered projects", values=myPaleteO[4], labels=c("All projects"), drop=FALSE)
+utilPercPlot40 <- utilPercPlot40 + ylab("Frequency(U) [%]") + xlab("U[%]") + themeP2  +ylim(0,100) + labs(title="A. Frequency of Utilization") #+ scale_x_discrete(breaks=c(0,5,10,15,20), labels=c(0,5,10,15,20))
+
+utilPercPlot402 <- ggplot(data = filter(dataUtilPr, dataUtilPr$SpecOrder==41 & ((dataUtilPr$PLevel*100)%%2) < 1))
+utilPercPlot402 <- utilPercPlot402 + geom_bar(aes(x=PLevel*100, y=(1-MEProb)*100, fill=myPaleteO[4]),  stat = "identity") +  scale_fill_manual(name="Number of considered projects", values=myPaleteO[4], labels=c("All projects"), drop=FALSE)
+utilPercPlot402 <- utilPercPlot402 +  ylim(0,100) + ylab("Frequency [%]") + xlab("U[%]") + themeP2   + labs(title="A. Frequency of Utilization") #+ scale_x_discrete(breaks=c(0,5,10,15,20),labels=c(0,5,10,15,20))
+
+
+
+#utilPercPlot <- utilPercPlot + geom_line(data=dplyr::filter(dataForBarUtilPerc, dataForBarUtilPerc$Perm==0), aes(x=SpecOrder, y=Operations*100, label = Operations, fill=Type, group=1), color="red")
+
+
+#For saving to File- Uncomment
+#   utilPlot
+#   pdf(paste("./output/UtilizationSim-Both", ".pdf", sep=''), width = 19, height = 10)
+#   multiplot(plotlist = list(utilPlotSimple, utilPlot), cols=2)
+ # dev.off()
+
+
+mePercPlot <- ggplot(data=data)
+mePercPlot <- mePercPlot + geom_boxplot(aes(x=factor(data$SpecOrder, levels=seq(1,42)), y=data$MEPerc*100, label=data$MEPerc, fill="grey70"), fill=myPalete[4], color="grey30", outlier.shape = NA)
+mePercPlot <- mePercPlot + themeP2 +  ylab("ME [%]") + xlab("Projects") + labs(title="B. Multiple evolutions") + theme(legend.position="no") + scale_x_discrete(breaks=c(0,10,20,30,40)) +ylim(0,60)
+plot(mePercPlot)
+
+mePercPlotFG <- ggplot(data=data)
+mePercPlotFG <- mePercPlotFG + geom_boxplot(aes(x=factor(data$SpecOrder, levels=seq(1,42)), y=data$MEPerc*100, label=data$MEPerc, fill="grey70"), fill=myPalete[4], color="grey30", outlier.shape = NA)
+mePercPlotFG <- mePercPlotFG + themeP2 +  ylab("ME [%]") + xlab("Projects") + labs(title="A. Fine grained approach") + theme(legend.position="no") + scale_x_discrete(breaks=c(0,10,20,30,40)) +ylim(0,60)
+plot(mePercPlotFG)
+
+
+```
+
+
+```{r echo=FALSE}
+
+dataMEPr <- data.frame(SpecOrder=-1, MEProb=-1, PLevel=-1)
+
+for (i in 1:20)
+{
+  for (j in 35:41)
+  {
+    dataMEPr <- rbind(dataMEPr, data.frame(SpecOrder=j, MEProb=nrow(filter(data, data$MEPerc <= i/100 & data$SpecOrder==j))/numOfPermutations, PLevel=i/100))
+
+}
+}
+dataMEPr <- filter(dataMEPr, dataMEPr$SpecOrder > -1)
+dataMEPr$SpecOrder <- factor(dataMEPr$SpecOrder, levels = seq(1,42))
+
+
+dataMEPrPlot <- ggplot(data=dataMEPr) + geom_point(aes(x=PLevel*100, y=MEProb, color=SpecOrder), size=3) + geom_line(aes(x=PLevel*100, y=MEProb, color=SpecOrder), size=2) + scale_color_manual(name="Number of considered projects", values=myBluePalte) + ylab("Frequency [%]") + xlab("Maintenance Effort/Catalog Size [%]") + labs(title=expression("Frequency of ME/Catalog Size")) + themeP + ylim(0,1) + guides(color=guide_legend(nrow=1))
+dataMEPrPlot
+#pdf(paste("./output/MESimPlotPlain-Both", ".pdf", sep=''), width = 19, height = 20)
+# multiplot(plotlist = list(mePlotSimple,dataMEPrPlotSimple,mePlot, dataMEPrPlot), cols=2)
+#
+# dev.off()
+
+dataMEPrPlotBar <- ggplot(data=filter(dataMEPr, dataMEPr$SpecOrder==41 & ((dataMEPr$PLevel*100)%%2)<1)) + geom_bar(aes(x=PLevel*100, y=MEProb*100, fill=SpecOrder), stat="identity", width=1) +  scale_fill_manual(name="Number of considered projects", values=myPalete[3], labels=c("All projects")) + ylab("Frequency [%]") + xlab("ME [%]") + labs(title=expression("A. Frequency of ME"))  + ylim(0,100) + guides(fill=guide_legend(nrow=1))
+dataMEPrPlotBar <- dataMEPrPlotBar + themeP2
+#pdf(paste("output/MaintainanceEffortSim-Both", ".pdf", sep=''), width = 19, height = 10)
+#multiplot(plotlist = list(mePlotSimple, mePlot), cols=2)
+#dev.off()
+
+#pdf(paste("./output/MESimPlotPlainBar-Both", ".pdf", sep=''), width = 19, height = 20)
+# multiplot(plotlist = list(mePlotSimple, dataMEPrPlotBarSimple, mePlot, dataMEPrPlotBar), cols=2)
+#
+# dev.off()
+
+
+
+### In terms of numbers
+
+data$MESizePlain <- (data$NumAffectedNoRTs - data$NumMatchNoRTs)
+
+dataMEPrPlain <- data.frame(SpecOrder=-1, MEProb=-1, PLevel=-1)
+
+for (i in 1:30)
+{
+  for (j in 35:41)
+  {
+    dataMEPrPlain <- rbind(dataMEPrPlain, data.frame(SpecOrder=j, MEProb=nrow(filter(data, data$MESizePlain <= i & data$SpecOrder==j))/numOfPermutations, PLevel=i))
+
+}
+}
+dataMEPrPlain <- filter(dataMEPrPlain, dataMEPrPlain$SpecOrder > -1)
+dataMEPrPlain$SpecOrder <- factor(dataMEPrPlain$SpecOrder, levels = seq(1,42))
+
+
+dataMEPrPlotPlain <- ggplot(data=dataMEPrPlain) + geom_point(aes(x=PLevel, y=MEProb, color=SpecOrder), size=3) + geom_line(aes(x=PLevel, y=MEProb, color=SpecOrder), size=2) + scale_color_manual(name="Number of considered projects", values=myBluePalte) + ylab("Frequency [%]") + xlab("Maintenance Effort") + labs(title=expression("Frequency of ME ")) +ylim(0,1) + themeP
+dataMEPrPlotPlain
+#pdf(paste("./output/MESimPlot-Both", ".pdf", sep=''), width = 19, height = 10)
+# multiplot(plotlist = list(dataMEPrPlotPlainSimple, dataMEPrPlotPlain), cols=2)
+#
+# dev.off()
+
+dataMEPrPlotBarPlain <- ggplot(data=dataMEPrPlain) + geom_bar(aes(x=PLevel, y=MEProb, fill=SpecOrder), stat="identity", position=position_dodge()) +  scale_fill_manual(name="Number of considered projects", values=myBluePalte) + ylab("Probability") + xlab("Maintenance Effort") + labs(title=expression("Probability of ME (approach "~beta~")")) +ylim(0,1) +  themeP
+dataMEPrPlotBarPlain
+# pdf(paste("./output/MESimPlotBar-Both", ".pdf", sep=''), width = 19, height = 10)
+# multiplot(plotlist = list(dataMEPrPlotBarPlainSimple, dataMEPrPlotBarPlain), cols=2)
+#
+# dev.off()
+
+
+```
+
+```{r echo=FALSE}
+#### Value
+
+# dataValue$NumAffectedNoRTs[dataValue$NumAffectedNoRTs > 1] <- 1 
+# dataValue$NumAddedNoRTs[dataValue$NumAddedNoRTs > 1] <- 1
+# dataValue$NumAddedNoRTs[dataValue$NumMatchNoRTsNoRTs > 1] <- 1 
+# dataAggr <- aggregate(.~SpecOrder+OurOrder+PermID, data = dataValue, FUN=sum )
+# dataAggr$Value <- (dataAggr$NumAffectedNoRTs-dataAggr$NumAddedNoRTs)/dataAggr$NumAffectedNoRTs
+# 
+# dataForBarValue <- data.frame(SpecOrder = dataAggr$SpecOrder, OurOrder = dataAggr$OurOrder, Operations = (dataAggr$NumAffectedNoRTs-dataAggr$NumAddedNoRTs)/dataAggr$NumAffectedNoRTs *100, Type="MatchedModified", Perm=dataAggr$PermID)
+# 
+# dataForBarValue$SpecOrder <- factor(dataForBarValue$SpecOrder, levels=seq(1,42))
+# 
+# valuePlot <- ggplot(data = dataForBarValue) 
+# 
+# valuePlot <- valuePlot + geom_boxplot(aes(x=SpecOrder, y=Operations, label = Operations, fill=Type))#, outlier.shape=NA)
+# valuePlot <- valuePlot + ylab("Value") + xlab("Projects")
+# valuePlot <- valuePlot + scale_fill_manual(name="", breaks=c("MatchedModified"), 
+#                            labels=c( "Value"), 
+#                            #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+#                            values=c("#48c13f", "grey80", "#8bb92d", "grey65"))
+# 
+# valuePlot <- valuePlot + scale_x_discrete(breaks=c(1,5,10,15,20,25,30,35,40))
+# 
+# valuePlot <- valuePlot + geom_line(data=dplyr::filter(dataForBarValue, dataForBarValue$Perm==0), aes(x=SpecOrder, y=Operations, label = Operations, fill=Type, group=1), color="red")
+# 
+# valuePlot
+
+
+#For saving in a file - Uncomment
+# p <- p  + theme(
+#  title =element_text(size=15, face='bold'),
+#  panel.grid.major = element_line(colour = "grey95", size=0.5),
+#  panel.border = element_rect(colour = "grey85", size = 0.75, fill=NA),
+#  legend.text=element_text(size=25, margin=margin(0,0,0,0)),
+#  legend.title=element_text(size=14,face="bold"),
+#  legend.position="bottom",
+#  legend.key.width=unit(25,"pt"),
+#  legend.key.height=unit(25,"pt"),
+#  axis.text.x = element_text(size=25,angle=0,hjust=.5,vjust=.5,face="plain"),
+#  axis.text.y = element_text(size=25,angle=0,hjust=1,vjust=0,face="plain"),  
+#  axis.title.x = element_text(size=30,angle=0,hjust=.5,vjust=0,face="plain", margin=margin(10,0,20,0)),
+#  axis.title.y = element_text(size=30,angle=90,hjust=.5,vjust=.5,face="plain", margin=margin(0,10,0,0))
+#  # strip.text = element_text(size=35,angle=0,hjust=.5,vjust=.5,face="plain", margin=margin(00,0,0,0)),
+#  #  strip.background = element_rect(colour = "grey85", size = 0.75)
+# )
+# p
+# pdf(paste("./output/ValueSim1", ".pdf", sep=''), width = 19, height = 8)
+# multiplot(plotlist = list(p), cols=1)
+# 
+# dev.off()
+```
+
+#Value Direct
+```{r echo=FALSE}
+#### Value Direct
+
+
+dataValueDirect$SpecOrder <- factor(dataValueDirect$SpecOrder, levels=seq(1,42))
+
+
+valueDirPlot <- ggplot(data = dataValueDirect) 
+valueDirPlot <- valueDirPlot + geom_boxplot(aes(x=SpecOrder, y=Value*100), fill=myBluePalte[7], outlier.shape=NA, color="grey30")
+valueDirPlot <- valueDirPlot + ylim(0,100)
+valueDirPlot <- valueDirPlot+ ylab("Value [%]") + xlab("Projects") + labs(title="B. Multiple evolutions")
+valueDirPlot <- valueDirPlot + scale_x_discrete(breaks=c(0,10,20,30,40)) 
+valueDirPlot <- valueDirPlot  + themeP2
+valueDirPlot
+   
+
+valueDirPlotFG <- ggplot(data = dataValueDirect) 
+valueDirPlotFG <- valueDirPlotFG + geom_boxplot(aes(x=SpecOrder, y=Value*100), fill=myBluePalte[7], outlier.shape=NA, color="grey30")
+valueDirPlotFG <- valueDirPlotFG + ylim(0,100)
+valueDirPlotFG <- valueDirPlotFG + ylab("Value [%]") + xlab("Projects") + labs(title="A. Fine grained approach")
+valueDirPlotFG <- valueDirPlotFG + scale_x_discrete(breaks=c(0,10,20,30,40))  + themeP2
+   
+
+p<- p +  ylim(0,100) + ylab("Value [%]") + xlab("Projects") + labs(title="A. Initial evolution") + scale_x_discrete(breaks=c(0,10,20,30,40)) + themeP2 + theme(legend.position="no")
+```
+
+```{r echo=FALSE, fig.height=10, fig.width=10}
+dataValueDirect$MatureLevel9 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.9,]$MatureLevel9 <- 1
+
+dataValueDirect$MatureLevel95 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.95,]$MatureLevel95 <- 1
+
+
+dataValueDirect$MatureLevel8 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.8,]$MatureLevel8 <- 1
+
+dataValueDirect$MatureLevel85 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.85,]$MatureLevel85 <- 1
+
+dataValueDirect$MatureLevel7 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.7,]$MatureLevel7 <- 1
+dataValueDirect$MatureLevel75 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.75,]$MatureLevel75 <- 1
+dataValueDirect$MatureLevel6 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.6,]$MatureLevel6 <- 1
+dataValueDirect$MatureLevel65 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.65,]$MatureLevel65 <- 1
+dataValueDirect$MatureLevel5 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.5,]$MatureLevel5 <- 1
+dataValueDirect$MatureLevel55 <- 0
+dataValueDirect[dataValueDirect$Value >= 0.55,]$MatureLevel55 <- 1
+histogram(dataValueDirect[dataValueDirect$Value >= 0.75,]$Value)
+dataValueDirect$SpecOrder <- as.numeric(as.character(dataValueDirect$SpecOrder))
+
+dataValueDirAggr <- aggregate(dataValueDirect, by=list(dataValueDirect$SpecOrder), FUN="sum" )
+dataValueDirAggr$SpecOrder <- dataValueDirAggr$SpecOrder/numOfPermutations
+dataValueDirAggr$MatureLevel9 <- dataValueDirAggr$MatureLevel9/numOfPermutations
+dataValueDirAggr$MatureLevel95 <- dataValueDirAggr$MatureLevel95/numOfPermutations
+dataValueDirAggr$MatureLevel8 <- dataValueDirAggr$MatureLevel8/numOfPermutations
+dataValueDirAggr$MatureLevel85 <- dataValueDirAggr$MatureLevel85/numOfPermutations
+dataValueDirAggr$MatureLevel75 <- dataValueDirAggr$MatureLevel75/numOfPermutations
+dataValueDirAggr$MatureLevel65 <- dataValueDirAggr$MatureLevel65/numOfPermutations
+dataValueDirAggr$MatureLevel7 <- dataValueDirAggr$MatureLevel7/numOfPermutations
+dataValueDirAggr$MatureLevel6 <- dataValueDirAggr$MatureLevel6/numOfPermutations
+dataValueDirAggr$MatureLevel5 <- dataValueDirAggr$MatureLevel5/numOfPermutations
+dataValueDirAggr$MatureLevel55 <- dataValueDirAggr$MatureLevel55/numOfPermutations
+dataValueDirAggr <-filter(dataValueDirAggr, dataValueDirAggr$SpecOrder >= 35)
+
+dataForBarV <- data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=95, PValue=dataValueDirAggr$MatureLevel95)
+dataForBarV <- rbind(dataForBarV, data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=90, PValue=dataValueDirAggr$MatureLevel9))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=85, PValue=dataValueDirAggr$MatureLevel85))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=80, PValue=dataValueDirAggr$MatureLevel8))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=75, PValue=dataValueDirAggr$MatureLevel75))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=70, PValue=dataValueDirAggr$MatureLevel7))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=65, PValue=dataValueDirAggr$MatureLevel65))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=60, PValue=dataValueDirAggr$MatureLevel6))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=55, PValue=dataValueDirAggr$MatureLevel55))
+dataForBarV <- rbind(dataForBarV,data.frame(SpecOrder=dataValueDirAggr$SpecOrder, ValueMargin=50, PValue=dataValueDirAggr$MatureLevel5))
+
+valueDirPlotA <- ggplot(data = dataValueDirAggr) 
+
+valueDirPlotA <- valueDirPlotA + geom_point(aes(x=SpecOrder, y=MatureLevel9), color="grey70")
+valueDirPlotA <- valueDirPlotA + geom_point(aes(x=SpecOrder, y=MatureLevel8), color="red")
+valueDirPlotA <- valueDirPlotA + geom_point(aes(x=SpecOrder, y=MatureLevel7), color="red")
+valueDirPlotA <- valueDirPlotA + geom_point(aes(x=SpecOrder, y=MatureLevel6), color="red")
+valueDirPlotA <- valueDirPlotA + geom_point(aes(x=SpecOrder, y=MatureLevel5), color="red")
+valueDirPlotA
+
+#Plot line
+valuePlotP <- ggplot(data=dataForBarV) + geom_point(aes(x=ValueMargin, y=PValue, color=factor(dataForBarV$SpecOrder, levels=seq(1,42))), size=3) + geom_line(aes(x=ValueMargin, y=PValue, color=factor(dataForBarV$SpecOrder, levels=seq(1,42)), group=SpecOrder), size=2) + scale_color_manual(name="Number of considered projects", values=myBluePalte)
+valuePlotP <- valuePlotP + ylab("Frequency [%]") + xlab("Value [%]") + labs(title=expression("Frequency of Value ")) + ylim(0,1) + themeP + guides(color = guide_legend(nrow = 1))
+valuePlotP
+#pdf(paste("./output/ValuesWithProbalilityLine-Beta", ".pdf", sep=''), width = 19, height = 10)
+# multiplot(plotlist = list(valuePlotPSimple, valuePlotP), cols=2)
+# dev.off()
+
+
+#Plot Bar
+valuePlotBar <- ggplot(data=dataForBarV) + geom_bar(aes(x=ValueMargin, y=PValue*100, fill=factor(dataForBarV$SpecOrder, levels=seq(1,42))), stat="identity", position=position_dodge()) + scale_fill_manual(name="Number of considered projects", values=myBluePalte)
+
+valuePlotBar <- valuePlotBar + ylab("Frequency(Value) [%]") + xlab("Value [%]") + labs(title="A. Frequency of Value") + guides(fill = guide_legend(nrow = 1)) + themeP
+valuePlotBar
+
+
+#Plot Bar
+valuePlotBar40 <- ggplot(data=filter(dataForBarV, dataForBarV$SpecOrder==41)) + geom_bar(aes(x=ValueMargin, y=PValue*100, fill=myBluePalte[6] ), stat="identity", position=position_dodge(), width=3) + scale_fill_manual(name="Number of considered projects", values=myBluePalte[6], drop=FALSE, labels=c("All projects"))
+
+valuePlotBar40 <- valuePlotBar40 + ylab("Frequency(Value) [%]") + xlab("Value [%]") + labs(title="A. Frequency of Value") + themeP2 + theme(legend.position="bottom")
+  #guides(fill = guide_legend(nrow = 1)) + themeP + legend("bottom", title = "ala", te)
+valuePlotBar40
+
+
+ #pdf(paste("./output/ValuesWithProbalilityBar-Beta", ".pdf", sep=''), width = 19, height = 10)
+ #multiplot(plotlist = list(valuePlotBarSimple, valuePlotBar), cols=2)
+ #dev.off()
+
+```
+
+
+```{r echo=FALSE, fig.height=10, fig.width=10}
+#Value Direct
+
+# 
+# for (i in 0:10)
+# {
+#   valueDirPlot <- ggplot(data = filter(dataValueDirect, dataValueDirect$PermID >= i*5 & dataValueDirect$PermID < (i+1)*5)) 
+# 
+#   valueDirPlot <- valueDirPlot + geom_line(aes(x=SpecOrder, y=Value*100, group=1), color="#56B4E9")#, outlier.shape=NA)
+#   valueDirPlot <- valueDirPlot + ylab("Value") + xlab("Projects")
+#   valueDirPlot <- valueDirPlot + facet_wrap(~PermID, scales="free")
+#    valueDirPlot <- valueDirPlot + ylim(0,100)
+#    
+#   valueDirPlot <- valueDirPlot + geom_smooth(data = filter(dataValueDirect, dataValueDirect$PermID >= i*5 & dataValueDirect$PermID < (i+1)*5), aes(x=SpecOrder, y=Value*100, group=1), method="lm")
+#   
+#   valueDirPlot <- valueDirPlot + scale_x_discrete(breaks=c(1,5,10,15,20,25,30,35,40))
+#   plot(valueDirPlot)
+# }
+```
+
+
+#Export for maturity point
+```{r echo=FALSE}
+### Maturity Point Export
+mpTable <- merge(dataForBarME, dataValueDirect, by.x=c("SpecOrder", "OurOrder", "Perm"), by.y=c("SpecOrder", "OurOrder", "PermID"))
+mpTable <- merge(mpTable, data, by.x=c("SpecOrder", "OurOrder", "Perm"), by.y=c("SpecOrder", "OurOrder", "PermID"))
+#write.table(mpTable, file=paste("valueAndME2-",top,"-WithCatalog2.csv", sep=""),sep = ";", dec = ".")
+```

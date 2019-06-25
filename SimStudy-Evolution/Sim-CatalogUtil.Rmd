@@ -1,0 +1,166 @@
+---
+title: "Simulation - Catalog ME"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+---
+# Input Data
+Specifications = WITH CATALOG - TOP - 10tys - all no3 - TOP414
+
+Numer of permuations = 10000
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+require(plyr)
+library(dplyr)
+library(MASS)
+#library(effsize)
+library(reshape2)
+library(ggplot2)
+library(Rmisc)
+library(RColorBrewer)
+
+source("InitSettings.R")
+initSettings()
+
+```
+
+```{r results="hide", echo=FALSE, warning=FALSE, message=FALSE}
+
+#Data for Operations, ME, Utilization
+data <-read.csv("input/nfrRes-1-permRandom-len41-max10000-no3.txt-top414", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+
+#data$SpecOrder <- seq(1,42)
+
+numOfPermutations <-10000
+```
+
+
+
+#Plot values of ME for multiple and initial evolutions
+```{r echo=FALSE}
+####Util
+numNoRTsAddedToCatalog<- max(filter(data, data$PermID==1)$NoRTsActive) - 84
+numNoRTsUncecessaryInCatalog <- 84 - top + numNoRTsAddedToCatalog
+dataForBarUtil <- data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder, Operations = data$NumAffectedNoRTs , Type="MatchedModified", Perm=data$PermID)
+
+dataForBarUtil <- rbind(dataForBarUtil, data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder,
+                                           Operations = data$NoRTsActive-numNoRTsUncecessaryInCatalog, Type="Rest", Perm=data$PermID))
+
+#Dla full catalogu 84 templaty na początku
+data$NoRTsActivePrev<-84 
+data$NoRTsActivePrev<- top - numNoRTsAddedToCatalog
+row <- c(top - numNoRTsAddedToCatalog, data$NoRTsActive-numNoRTsUncecessaryInCatalog)
+a <- row[length(row)]
+row <- row[-length(row)]
+
+data$NoRTsActivePrev <- row
+data$NoRTsActivePrev[data$SpecOrder == 1] <- top - numNoRTsAddedToCatalog #84 dla full
+
+data$Utilization <- (data$NumAffectedNoRTs-data$NumAddedNoRT)/data$NoRTsActivePrev
+
+#median(merged2$Utilization)
+
+#max(data$Utilization, na.rm = TRUE)
+#min(data$Utilization, na.rm = TRUE)
+#mean(data$Utilization, na.rm = TRUE)
+#median(data$Utilization, na.rm = TRUE)
+#max(data$NumAffectedNoRTs-data$NumAddedNoRTs)
+#min(data$NumAffectedNoRTs-data$NumAddedNoRTs)
+#mean(data$NumAffectedNoRTs-data$NumAddedNoRTs)
+#median(data$NumAffectedNoRTs-data$NumAddedNoRTs)
+
+dataForBarUtil$SpecOrder <- factor(dataForBarUtil$SpecOrder, levels=seq(1,42))
+
+
+dataUtilPr <- data.frame(SpecOrder=-1, MEProb=-1, PLevel=-1)
+dataUtilPr2 <- data.frame(SpecOrder=-1, MEProb=-1, PLevel=-1)
+
+for (i in 1:20)
+{
+  for (j in 35:41)
+  {
+    dataUtilPr <- rbind(dataUtilPr, data.frame(SpecOrder=j, MEProb=nrow(filter(data, data$Utilization <= i/100 & data$SpecOrder==j))/numOfPermutations, PLevel=i/100))
+dataUtilPr2 <- rbind(dataUtilPr2, data.frame(SpecOrder=j, MEProb=nrow(filter(data, data$Utilization >= i/100 & data$SpecOrder==j))/numOfPermutations, PLevel=i/100))
+
+}
+}
+dataUtilPr <- filter(dataUtilPr, dataUtilPr$SpecOrder > -1)
+dataUtilPr2 <- filter(dataUtilPr2, dataUtilPr2$SpecOrder > -1)
+dataUtilPr$SpecOrder <- factor(dataUtilPr$SpecOrder, levels = seq(1,42))
+dataUtilPr2$SpecOrder <- factor(dataUtilPr2$SpecOrder, levels = seq(1,42))
+
+
+
+
+
+dataForBarUtilPerc <- data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder, Operations = data$Utilization , Type="UtilPerc", Perm=data$PermID)
+dataForBarUtilPerc$SpecOrder <- factor(dataForBarUtilPerc$SpecOrder, levels=seq(1,42))
+
+
+dataForBarUtilPerc$SpecOrder <- factor(dataForBarUtilPerc$SpecOrder, levels=seq(1,42))
+utilPercPlot <- ggplot(data = dataForBarUtilPerc)
+utilPercPlot <- utilPercPlot + geom_boxplot(aes(x=SpecOrder, y=Operations*100, label=Operations, fill=Type), color="grey30", outlier.shape = NA)
+utilPercPlot <- utilPercPlot + scale_fill_manual(name="Type:", breaks=c("Matched", "Modified", "Added", "UnTouched", "UtilPerc"), 
+                           labels=c( "Matched","Indirectly derived", "Added", "UnTouched", "UtilPerc"), 
+                           #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+                           values=c(myPaleteOranges[4], "#8bb92d", "grey55","grey65", "orange", "green"))
+#EN
+utilPercPlot <- utilPercPlot + ylab("U in [%]") + xlab("Projects") + themeP2 + scale_x_discrete(breaks=c(0,10,20,30,40)) + theme(legend.position="no") + labs(title="A. Multiple evolutions") +ylim(0,30)
+#PL
+#utilPercPlot <- utilPercPlot + ylab("Użycie katalogu [%]") + xlab("Projekty") + themeP2 + scale_x_discrete(breaks=c(0,10,20,30,40)) + theme(legend.position="no") + labs(title="B. Wiele ewolucji") +ylim(0,30)
+
+utilPercPlot
+
+utilPercPlotFG <- ggplot(data = dataForBarUtilPerc)
+utilPercPlotFG <- utilPercPlotFG + geom_boxplot(aes(x=SpecOrder, y=Operations*100, label=Operations, fill=Type), color="grey30", outlier.shape = NA)
+utilPercPlotFG <- utilPercPlotFG + scale_fill_manual(name="Type:", breaks=c("Matched", "Modified", "Added", "UnTouched", "UtilPerc"), 
+                           labels=c( "Matched","Indirectly derived", "Added", "UnTouched", "UtilPerc"), 
+                           #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+                           values=c(myPaleteO[4], "#8bb92d", "grey55","grey65", "orange", "green"))
+
+utilPercPlotFG <- utilPercPlotFG + ylab("U in [%]") + xlab("Projects") + themeP2 + scale_x_discrete(breaks=c(0,10,20,30,40)) + theme(legend.position="no") + labs(title="A. Fine grained approach") +ylim(0,30)
+
+
+#For initial evolution first run other scripts
+#utilPercPlotInit <- ggplot(data=dataME)
+#utilPercPlotInit <- utilPercPlotInit + geom_bar(aes(x=factor(SpecOrder, levels=seq(1,42)), y=UtilPerc*100, fill=myPaleteO[5]),  stat = "identity", fill=myPaleteO[5])
+#EN
+#utilPercPlotInit <- utilPercPlotInit + themeP2 +  ylab("U [%]") + xlab("Projects") + labs(title="A. Initial evolution") + theme(legend.position="no") + scale_x_discrete(breaks=c(0,10,20,30,40), labels=c(0,10,20,30,40))  +ylim(0,30)
+#utilPercPlotInit <- utilPercPlotInit + themeP2 +  ylab("Użycie katalogu [%]") + xlab("Projekty") + labs(title="A. Pierwsza ewolucja") + theme(legend.position="no") + scale_x_discrete(breaks=c(0,10,20,30,40), labels=c(0,10,20,30,40))  +ylim(0,30)
+#plot(utilPercPlotInit)
+
+
+
+
+```
+
+## Plot frequency analysis
+### Aim of frequency analysis is to plot the percentage of the number of the catalogs (moments of simulations, frequency) that has at least ceratain value of the analyzed characteristic, e.g., what is the frequency of catalog value at 0.9? the answer will tell us how many times catalog had at least 0.9 value during multiple simulations.
+```{r echo=FALSE, fig.height=10, fig.width=10}
+utilPercPlot402 <- ggplot(data = filter(dataUtilPr, dataUtilPr$SpecOrder==41 & ((dataUtilPr$PLevel*100)%%2) < 1))
+utilPercPlot402 <- utilPercPlot402 + geom_bar(aes(x=PLevel*100, y=(MEProb)*100, fill=myPaleteOranges[4]),  stat = "identity") +  scale_fill_manual(name="Number of considered projects", values=myPaleteOranges[4], labels=c("All projects"), drop=FALSE)
+utilPercPlot402 <- utilPercPlot402 +  ylim(0,100) + ylab("Frequency [%]") + xlab("U[%]") + themeP2   + labs(title="B. Frequency analysis")+ theme(legend.position="no") #+ scale_x_discrete(breaks=c(0,5,10,15,20),labels=c(0,5,10,15,20))
+utilPercPlot402
+
+```
+
+## Pseudo-outlier analysis
+```{r echo=FALSE, fig.height=10, fig.width=10}
+dataForUtilWithRepl<- read.csv(file=paste("input/dataForUtilWithRepl-414-WithCatalog.csv", sep=""), sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+dataForUtilPlot <- filter(dataForUtilWithRepl, ((dataForUtilWithRepl$PLevel*100)%%2) < 1)
+utilWithReplPlot <- ggplot(data=dataForUtilPlot) + geom_point(aes(x=PLevel*100, y=MEProb*100, color=factor(Repl, levels = seq(0,5))), size=3) + geom_line(aes(x=PLevel*100, y=MEProb*100, color=factor(Repl, levels = seq(0,5)), group=Repl), size=2) 
+utilWithReplPlot <- utilWithReplPlot + scale_color_manual(name="#Excluded \npseudo-outliers", values=myPaleteOranges, labels=c("0","3","5", "7", "9", "11"))
+utilWithReplPlot <- utilWithReplPlot + ylab("Frequency(U) [%]") + xlab("U [%]") + labs(title="C. Pseudo-outliers analysis") 
+utilWithReplPlot <- utilWithReplPlot + ylim(0,100) + guides(color = guide_legend(nrow = 1)) + themeP2
+utilWithReplPlot
+
+```

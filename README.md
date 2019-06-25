@@ -1,6 +1,7 @@
 # DataAnalysis
 
-The repo contains the tools, scripts used to analyze the data for empirical studies concerning non-fuctional requirements (NFRs) and NFR templates.
+The repo contains the tools, scripts used to analyze the data for empirical studies concerning non-functional requirements (NFRs) and NFR 
+Templates.
 
 See more on: http://senor.cs.put.poznan.pl/experiment
 

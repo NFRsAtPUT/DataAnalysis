@@ -1,0 +1,169 @@
+---
+title: "Simulation - Catalog ME"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+---
+# Input Data
+Specifications = WITH CATALOG - TOP - 10tys - all no3 - TOP414
+
+Numer of permuations = 10000
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+require(plyr)
+library(dplyr)
+library(MASS)
+#library(effsize)
+library(reshape2)
+library(ggplot2)
+library(Rmisc)
+library(RColorBrewer)
+
+source("InitSettings.R")
+initSettings()
+
+```
+
+```{r results="hide", echo=FALSE, warning=FALSE, message=FALSE}
+
+#Data for Operations, ME, Utilization
+data <-read.csv("input/nfrRes-1-permRandom-len41-max10000-no3.txt-top414", sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+
+#data$SpecOrder <- seq(1,42)
+
+numOfPermutations <-10000
+```
+
+
+
+#Plot values of ME for multiple and initial evolutions
+```{r echo=FALSE}
+#### Value Direct
+
+###Maintainance Effort
+dataForBarME <- data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder, Operations = data$NumAffectedNoRTs - data$NumMatchNoRTs, Type="AddedOrModified", Match=data$NumMatchNoRTs, Perm=data$Perm)
+
+# for (i in 0:numOfPermutations)
+# {
+#   filt <- filter(dataForBarME, dataForBarME$Perm==100)
+#   a <- shapiro.test(filt$Operations)
+#   if (a$p.value > 0.05)
+#   { print(i)}
+# }
+# hist(filt$Operations)
+# qqnorm(filt$Operations);qqline(filt$Operations)
+# a$statistic
+
+dataForBarME$SpecOrder <- factor(dataForBarME$SpecOrder, levels=seq(1,42))
+
+
+mePlot <- ggplot() + geom_boxplot(data=dataForBarME, aes(x=SpecOrder, y=Operations, label = Operations, fill=Type), outlier.shape = NA)
+mePlot <- mePlot + ylab("Maintenance Effort") + xlab("Projects") + labs(title=expression("A. Maintenance Effort"))
+
+mePlot <- mePlot + scale_fill_manual(name="Considered sets of NFR templates", breaks=c("Matched", "Modified", "Added", "UnTouched", "AddedOrModified"), 
+                           labels=c( "Matched","Indirectly derived", "Added", "UnTouched", "Added and Modified"), 
+                           #  values=c("#0072B2", "#D55E00","#56B4E9","#E69F00"))
+                           values=c("grey70", "#8bb92d", "grey55","grey65", "orange"))+ scale_x_discrete(breaks=c(1,5,10,15,20,25,30,35,40))
+
+mePlot <- mePlot + ylim(0,80)
+
+
+#mePlot <- mePlot + geom_line(data=dplyr::filter(dataForBarME, dataForBarME$Perm==1020), aes(x=SpecOrder, y=Operations, label = Operations, fill=Type, group=1), color="white")
+#mePlot <- mePlot + geom_line(data=dplyr::filter(dataForBarME, dataForBarME$Perm==3717), aes(x=SpecOrder, y=Operations, label = Operations, fill=Type, group=1), color="black")
+
+
+
+ #For saving in file - Uncomment
+mePlot <- mePlot  + themeP2 + theme(
+  
+  legend.position="none"
+  
+  
+  
+)
+mePlot
+
+numNoRTsAddedToCatalog<- max(filter(data, data$PermID==1)$NoRTsActive) - 84
+numNoRTsUncecessaryInCatalog <- 84 - top + numNoRTsAddedToCatalog
+#dataForBarUtil <- data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder, Operations = data$NumAffectedNoRTs , Type="MatchedModified", Perm=data$PermID)
+
+#dataForBarUtil <- rbind(dataForBarUtil, data.frame(SpecOrder = data$SpecOrder, OurOrder = data$OurOrder,
+#                                           Operations = data$NoRTsActive-numNoRTsUncecessaryInCatalog, Type="Rest", Perm=data$PermID))
+
+#Dla full catalogu 84 templaty na początku
+data$NoRTsActivePrev<-84 
+data$NoRTsActivePrev<- top - numNoRTsAddedToCatalog
+row <- c(top - numNoRTsAddedToCatalog, data$NoRTsActive-numNoRTsUncecessaryInCatalog)
+a <- row[length(row)]
+row <- row[-length(row)]
+
+data$NoRTsActivePrev <- row
+data$NoRTsActivePrev[data$SpecOrder == 1] <- top - numNoRTsAddedToCatalog #84 dla full
+data$MEPerc <- (data$NumAffectedNoRTs - data$NumMatchNoRTs)/data$NoRTsActive
+
+mePercPlot <- ggplot(data=data)
+mePercPlot <- mePercPlot + geom_boxplot(aes(x=factor(data$SpecOrder, levels=seq(1,42)), y=data$MEPerc*100, label=data$MEPerc, fill="grey70"), fill=myPaletePurples[4], color="grey30", outlier.shape = NA)
+#EN:
+mePercPlot <- mePercPlot + themeP2 +  ylab("ME [%]") + xlab("Projects") + labs(title="A. Multiple evolutions") + theme(legend.position="no") + scale_x_discrete(breaks=c(0,10,20,30,40)) +ylim(0,60)
+#PL:
+#mePercPlot <- mePercPlot + themeP2 +  ylab("Pracochłonność utrzymania [%]") + xlab("Projekty") + labs(title="B. Wiele ewolucji") + theme(legend.position="no") + scale_x_discrete(breaks=c(0,10,20,30,40)) +ylim(0,60)
+mePercPlot
+
+
+mePercPlotFG <- ggplot(data=data)
+mePercPlotFG <- mePercPlotFG + geom_boxplot(aes(x=factor(data$SpecOrder, levels=seq(1,42)), y=data$MEPerc*100, label=data$MEPerc, fill="grey70"), fill=myPaletePurples[4], color="grey30", outlier.shape = NA)
+mePercPlotFG <- mePercPlotFG + themeP2 +  ylab("ME [%]") + xlab("Projects") + labs(title="A. Fine grained approach") + theme(legend.position="no") + scale_x_discrete(breaks=c(0,10,20,30,40)) +ylim(0,60)
+plot(mePercPlotFG)
+```
+
+## Plot frequency analysis
+### Aim of frequency analysis is to plot the percentage of the number of the catalogs (moments of simulations, frequency) that has at least ceratain value of the analyzed characteristic, e.g., what is the frequency of catalog value at 0.9? the answer will tell us how many times catalog had at least 0.9 value during multiple simulations.
+```{r echo=FALSE, fig.height=10, fig.width=10}
+dataMEPr <- data.frame(SpecOrder=-1, MEProb=-1, PLevel=-1)
+
+for (i in 1:20)
+{
+  for (j in 35:41)
+  {
+    dataMEPr <- rbind(dataMEPr, data.frame(SpecOrder=j, MEProb=nrow(filter(data, data$MEPerc <= i/100 & data$SpecOrder==j))/numOfPermutations, PLevel=i/100))
+
+}
+}
+dataMEPr <- filter(dataMEPr, dataMEPr$SpecOrder > -1)
+dataMEPr$SpecOrder <- factor(dataMEPr$SpecOrder, levels = seq(1,42))
+
+
+dataMEPrPlot <- ggplot(data=dataMEPr) + geom_point(aes(x=PLevel*100, y=MEProb, color=SpecOrder), size=3) + geom_line(aes(x=PLevel*100, y=MEProb, color=SpecOrder), size=2) + scale_color_manual(name="Number of considered projects", values=myBluePalete) + ylab("Frequency [%]") + xlab("Maintenance Effort/Catalog Size [%]") + labs(title=expression("Frequency of ME/Catalog Size")) + themeP + ylim(0,1) + guides(color=guide_legend(nrow=1))
+dataMEPrPlot
+#pdf(paste("./output/MESimPlotPlain-Both", ".pdf", sep=''), width = 19, height = 20)
+# multiplot(plotlist = list(mePlotSimple,dataMEPrPlotSimple,mePlot, dataMEPrPlot), cols=2)
+#
+# dev.off()
+
+dataMEPrPlotBar <- ggplot(data=filter(dataMEPr, dataMEPr$SpecOrder==41 & ((dataMEPr$PLevel*100)%%2)<1)) + geom_bar(aes(x=PLevel*100, y=MEProb*100, fill=SpecOrder), stat="identity", width=1) +  scale_fill_manual(name="Number of considered projects", values=myPaletePurples[3], labels=c("All projects")) + ylab("Frequency [%]") + xlab("ME [%]") + labs(title="B. Frequency analysis")  + ylim(0,100) 
+dataMEPrPlotBar <- dataMEPrPlotBar + themeP2 + theme(legend.position="no")
+dataMEPrPlotBar
+
+```
+
+## Pseudo-outlier analysis
+```{r echo=FALSE, fig.height=10, fig.width=10}
+dataForMEPrWithRepl<- read.csv(file=paste("input/dataForMEPrWithRepl-414-WithCatalog.csv", sep=""), sep=";", header=TRUE, encoding = "UTF-8", dec=".")
+
+meData<- filter(dataForMEPrWithRepl, ((dataForMEPrWithRepl$PLevel*100)%%2) < 1)
+meWithReplPlot <- ggplot(data=meData) + geom_point(aes(x=PLevel*100, y=MEProb*100, color=factor(Repl, levels = seq(0,5))), size=3) + geom_line(aes(x=PLevel*100, y=MEProb*100, color=factor(Repl, levels = seq(0,5)), group=Repl), size=2)
+meWithReplPlot <- meWithReplPlot + ylab("Frequency(ME) [%]") + xlab("ME [%]") + labs(title="C. Pseudo-outliers analysis") 
+meWithReplPlot <- meWithReplPlot + ylim(0,100) + scale_color_manual(name="#Excluded \npseudo-outliers", values=myPaletePurples, labels=c("0","3","5", "7", "9", "11"))
+meWithReplPlot <- meWithReplPlot + ylim(0,100) + guides(color=guide_legend(nrow=2)) + themeP2
+meWithReplPlot
+
+
+```
